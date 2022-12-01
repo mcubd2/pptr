@@ -13,7 +13,7 @@ const cors = require("cors");
 
 
 
-let chrome = {};
+let chrome 
 let puppeteer;
 
 
@@ -180,16 +180,6 @@ app.get("/api", async (req, res) => {
   }
 
   try {
-    options = {
-      args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
-      defaultViewport: chrome.defaultViewport,
-      executablePath: await chrome.executablePath,
-      headless: true,
-      ignoreHTTPSErrors: true,
-    };
-
-
-
 
     let browser = await puppeteer.launch(options);
 
