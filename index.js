@@ -157,7 +157,7 @@ var bgfind = async (fblink) => {
 app.post("/", async (req, res) => {
 
 
-  res.send(await bgfind(req.header.data));
+  res.send(await bgfind(req.headers.data));
 
 });
 
