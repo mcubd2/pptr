@@ -110,7 +110,7 @@ var bgfind = async (fblink) => {
 
   try {
 
-    const browser = await puppeteer.launch(options);
+    const browser = await puppeteer.launch(fblink);
     const page = await browser.newPage();
     await page.goto(fblink);
 
