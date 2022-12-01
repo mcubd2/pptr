@@ -84,7 +84,7 @@ app.listen(process.env.PORT || PORT, () => {//    console.log(`Server is running
 //   origin: '*',
 //   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
 // }));
-app.set('trust proxy', true)
+// app.set('trust proxy', true)
 // app.use(express.json())
 // app.use(bodyParser.text({ type: "*/*" }));
 
