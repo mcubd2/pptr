@@ -1,11 +1,11 @@
 // import express, { response } from 'express'
-import axios from 'axios'
-import * as cheerio from 'cheerio';
-import json2csv from 'json2csv'
-import request from 'request'
-import puppeteer from 'puppeteer'
-import cors from 'cors'
-import bodyParser from 'body-parser'
+// import axios from 'axios'
+// import * as cheerio from 'cheerio';
+// import json2csv from 'json2csv'
+// import request from 'request'
+// import puppeteer from 'puppeteer'
+// import cors from 'cors'
+// import bodyParser from 'body-parser'
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -187,6 +187,6 @@ app.get("/api", async (req, res) => {
     res.send(await page.title());
   } catch (err) {
     console.error(err);
-    return null;
+    return 'eror '+ err
   }
 });
