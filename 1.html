@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FB-image-finder</title>
+</head>
+<body>
+    
+
+    <h3 id="h3">Request A Movie</h3>
+    <form name="myForm" onsubmit="return mySubmitFunction(event)" autocomplete="off">
+        <label for="subject">Fb profile link</label>
+        <input id="subject" name="subject" placeholder="Paste the link.." style="height:70px;width:90%;"
+            spellcheck="false"></input>
+
+        <input type="submit" name="submitt" value="Submit">
+    </form>
+
+<img src="" alt="">
+
+
+
+
+
+
+
+<script>
+            function mySubmitFunction(e) {
+            e.preventDefault();
+            var x = document.forms["myForm"]["subject"].value;
+            if (x == "") {
+                alert("can't send empty messege");
+                return false;
+            } else {
+                // document.forms["myForm"]["subject"].value=''
+                serverSend(x);
+                return false;
+            }
+        }
+
+
+        function serverSend(link) {
+
+            let xhttp = new XMLHttpRequest();
+            xhttp.open("POST", 'http://localhost:3000/', true);
+
+            xhttp.send(link);
+
+            xhttp.onload = function () {
+
+                const obj =JSON.parse(this.responseText);
+
+                // document.getElementById('h3').innerHTML=this.responseText
+                console.log(obj)
+                console.log(Object.keys(obj).length)
+
+                for (let i = 0; i < Object.keys(obj).length; i++) {
+                // text += cars[i] + "<br>";
+                let img= document.createElement("img")
+                img.setAttribute('src',obj[i])
+                document.body.append(img)
+              
+                }
+
+
+            }
+
+
+        }
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
