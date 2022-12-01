@@ -79,7 +79,7 @@ var bgfind= async(fblink)=>{
 
 const browser = await puppeteer. launch({ headless : true });
 const page = await browser.newPage();
-await page.goto(fblink);
+await page.goto('https://www.facebook.com/stuped.heard.9');
 
 
 
