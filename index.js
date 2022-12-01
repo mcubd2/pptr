@@ -61,7 +61,7 @@ const PORT = 3000;
 
 // get('https://facebook.com')
 
-app.listen(PORT, () => {//    console.log(`Server is running on PORT: ${PORT}`);
+app.listen(process.env.PORT || PORT, () => {//    console.log(`Server is running on PORT: ${PORT}`);
 });
 
 app.use(cors({
