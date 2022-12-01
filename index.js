@@ -13,7 +13,7 @@ const cors = require("cors");
 
 
 
-let chrome 
+let chrome = {};
 let puppeteer;
 
 
