@@ -1,19 +1,35 @@
-import express, { response } from 'express'
-import axios from 'axios'
-import * as cheerio from 'cheerio';
-import json2csv from 'json2csv'
-import request from 'request'
-import puppeteer from 'puppeteer'
-import cors from 'cors'
-import bodyParser from 'body-parser'
+// import express, { response } from 'express'
+// import axios from 'axios'
+// import * as cheerio from 'cheerio';
+// import json2csv from 'json2csv'
+// import request from 'request'
+// import puppeteer from 'puppeteer'
+// import cors from 'cors'
+// import bodyParser from 'body-parser'
+
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+
+
+
+let chrome = {};
+let puppeteer;
+
+
+if (true) {
+  chrome = require("chrome-aws-lambda");
+  puppeteer = require("puppeteer-core");
+} else {
+  puppeteer = require("puppeteer");
+}
+
 
 
 
 
 
 const app = express();
-
-
 const PORT = 3000;
 
 
@@ -28,7 +44,7 @@ const PORT = 3000;
 
 
 //         return genre
-        
+
 //     }
 //     catch(eror){
 //         console.error(eror)
@@ -41,7 +57,7 @@ const PORT = 3000;
 //       'content-type': 'application/json',
 //       'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
 //     },
-  
+
 //   };
 
 // var u
@@ -66,56 +82,66 @@ app.listen(process.env.PORT || PORT, () => {//    console.log(`Server is running
 
 app.use(cors({
   origin: '*',
-  methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+  methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
 }));
 app.set('trust proxy', true)
 app.use(express.json())
-app.use(bodyParser.text({type:"*/*"}));
+app.use(bodyParser.text({ type: "*/*" }));
 
 
 
-var bgfind= async(fblink)=>{
+var bgfind = async (fblink) => {
 
-    try{
+  let options = {};
 
-        
-
-
-
-
-
-const browser = await puppeteer. launch({ headless : true });
-const page = await browser.newPage();
-await page.goto('https://www.facebook.com/stuped.heard.9');
-
-
+  if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
+    options = {
+      args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
+      defaultViewport: chrome.defaultViewport,
+      executablePath: await chrome.executablePath,
+      headless: true,
+      ignoreHTTPSErrors: true,
+    };
+  }
 
 
 
-await page .waitForSelector('img',{
-visible: true,
-})
 
 
-const data = await page.evaluate( () => {
-const images = document.querySelectorAll('img');
+  try {
 
-const urls = Array.from(images).map(v => v.src);
-
-const objj = Object.assign({}, urls);
-
-
-return objj
-})
-
-return data
+    const browser = await puppeteer.launch({ headless: true });
+    const page = await browser.newPage();
+    await page.goto('https://www.facebook.com/stuped.heard.9');
 
 
-}
-catch(eror){
+
+
+
+    await page.waitForSelector('img', {
+      visible: true,
+    })
+
+
+    const data = await page.evaluate(() => {
+      const images = document.querySelectorAll('img');
+
+      const urls = Array.from(images).map(v => v.src);
+
+      const objj = Object.assign({}, urls);
+
+
+      return objj
+    })
+
+    return data
+
+
+  }
+  catch (eror) {
     console.error(eror)
-    return 'eror '+ eror
-}
+    return 'eror ' + eror
+  }
 
 
 
@@ -124,19 +150,55 @@ catch(eror){
 
 
 
- 
 
 
 
-app.post("/",async (req, res) => {
+
+app.post("/", async (req, res) => {
 
 
-   res.send(await bgfind(req.body));
+  res.send(await bgfind(req.body));
 });
 
-app.get("/",async (req, res) => {
+app.get("/", async (req, res) => {
 
   res.send('Home sweat home!');
 });
 
+
+app.get("/api", async (req, res) => {
+  let options = {};
+
+  if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
+    options = {
+      args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
+      defaultViewport: chrome.defaultViewport,
+      executablePath: await chrome.executablePath,
+      headless: true,
+      ignoreHTTPSErrors: true,
+    };
+  }
+
+  try {
+    options = {
+      args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
+      defaultViewport: chrome.defaultViewport,
+      executablePath: await chrome.executablePath,
+      headless: true,
+      ignoreHTTPSErrors: true,
+    };
+
+
+
+
+    let browser = await puppeteer.launch(options);
+
+    let page = await browser.newPage();
+    await page.goto("https://www.google.com");
+    res.send(await page.title());
+  } catch (err) {
+    console.error(err);
+    return 'eror '+ err
+  }
+});
 
