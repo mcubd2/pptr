@@ -114,7 +114,7 @@ return data
 }
 catch(eror){
     console.error(eror)
-    return eror
+    return 'eror '+ eror
 }
 
 
