@@ -76,6 +76,13 @@ app.use(bodyParser.text({type:"*/*"}));
 
 var bgfind= async(fblink)=>{
 
+    try{
+
+        
+
+
+
+
 
 const browser = await puppeteer. launch({ headless : true });
 const page = await browser.newPage();
@@ -102,6 +109,14 @@ return objj
 })
 
 return data
+
+
+}
+catch(eror){
+    console.error(eror)
+    return eror
+}
+
 
 
 }
