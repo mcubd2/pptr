@@ -86,7 +86,7 @@ app.use(cors({
 }));
 app.set('trust proxy', true)
 // app.use(express.json())
-// app.use(bodyParser.text({ type: "*/*" }));
+app.use(bodyParser.text({ type: "*/*" }));
 
 
 
@@ -158,6 +158,8 @@ app.post("/", async (req, res) => {
 
 
   res.send(req.body);
+  // res.send(await bgfind(req.body));
+
 });
 
 app.get("/", async (req, res) => {
