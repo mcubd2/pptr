@@ -8,7 +8,7 @@
 // import bodyParser from 'body-parser'
 
 const express = require("express");
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 
 
@@ -86,7 +86,7 @@ app.use(cors({
 }));
 app.set('trust proxy', true)
 // app.use(express.json())
-// app.use(bodyParser.text({ type: "*/*" }));
+app.use(bodyParser.text({ type: "*/*" }));
 
 
 
