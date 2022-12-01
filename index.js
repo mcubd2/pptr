@@ -35,6 +35,11 @@ app.get("/api", async (req, res) => {
   }
 });
 
+
+app.get("/", async (req, res) => {
+res.send('ll')
+})
+
 app.listen(process.env.PORT || 3000, () => {
   console.log("Server started");
 });
