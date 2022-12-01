@@ -86,7 +86,7 @@ app.use(cors({
 }));
 app.set('trust proxy', true)
 // app.use(express.json())
-app.use(bodyParser.text({ type: "*/*" }));
+// app.use(bodyParser.text({ type: "*/*" }));
 
 
 
