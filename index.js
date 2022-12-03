@@ -123,9 +123,9 @@ var bgfind = async (fblink) => {
 
 
 
-    await page.waitForSelector('img', {
-      visible: true,
-    })
+    // await page.waitForSelector('img', {
+    //   visible: true,
+    // })
 
 
     const data = await page.evaluate(() => {
