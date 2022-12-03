@@ -136,7 +136,7 @@ var bgfind = async (fblink) => {
       const objj = Object.assign({}, urls);
 
 
-      return document.querySelector('body');
+      return String(document.querySelector('body'))
     })
 
     return data
