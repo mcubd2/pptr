@@ -92,6 +92,11 @@ app.use(cors({
 
 var bgfind = async (fblink) => {
 
+
+  const regex = /^.+facebook/;
+  const fblinkregex = fblink.replace(regex, 'https://www.facebook');
+
+
   let options = {};
 
   if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
@@ -112,7 +117,7 @@ var bgfind = async (fblink) => {
 
     const browser = await puppeteer.launch(options);
     const page = await browser.newPage();
-    await page.goto(fblink);
+    await page.goto(fblinkregex);
 
 
 
@@ -189,7 +194,7 @@ app.get("/api", async (req, res) => {
     res.send(await page.title());
   } catch (err) {
     console.error(err);
-    return 'eror '+ err
+    return 'eror ' + err
   }
 });
 
