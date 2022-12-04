@@ -21,6 +21,9 @@
     "puppeteer-core": "^6"
   },
   "devDependencies": {
-    "puppeteer": "^19.3.0"
+    "got": "^12.5.3",
+    "https": "^1.0.0",
+    "puppeteer": "^19.3.0",
+    "tunnel": "^0.0.6"
   }
 }

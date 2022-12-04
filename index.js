@@ -13,6 +13,7 @@ const cors = require("cors");
 
 
 
+
 let chrome = {};
 let puppeteer;
 
@@ -168,6 +169,7 @@ app.post("/", async (req, res) => {
 
 app.get("/", async (req, res) => {
 
+  console.log(req.headers)
   res.send('Home sweat home!');
 });
 
