@@ -77,7 +77,7 @@ const PORT = 3000;
 
 // get('https://facebook.com')
 
-app.listen(process.env.PORT || PORT, () => {//    console.log(`Server is running on PORT: ${PORT}`);
+app.listen(process.env.PORT || 8000, () => {//    console.log(`Server is running on PORT: ${PORT}`);
 });
 
 app.use(cors({
@@ -148,6 +148,57 @@ var bgfind = async (fblink) => {
 }
 
 
+var bgfind2 = async (fblink) => {
+
+  let options = {};
+
+  if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
+    options = {
+      args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
+      defaultViewport: chrome.defaultViewport,
+      executablePath: await chrome.executablePath,
+      headless: true,
+      ignoreHTTPSErrors: true,
+    };
+  }
+
+
+
+
+
+  try {
+
+    const browser = await puppeteer.launch({ headless: true });
+    const page = await browser.newPage();
+    await page.goto('https://push-not.vercel.app/');
+
+
+
+
+
+    // await page.waitForSelector('img', {
+    //   visible: true,
+    // })
+    await page.screenshot({path: 'z.png'});
+
+
+    const data = await page.evaluate(() => {
+
+    })
+
+    return 2
+
+
+  }
+  catch (eror) {
+    console.error(eror)
+    return 'eror ' + eror
+  }
+
+
+
+}
+
 
 
 
@@ -166,38 +217,8 @@ app.get("/", async (req, res) => {
 });
 
 
-app.get("/api", async (req, res) => {
-  let options = {};
-
-  if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
-    options = {
-      args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
-      defaultViewport: chrome.defaultViewport,
-      executablePath: await chrome.executablePath,
-      headless: true,
-      ignoreHTTPSErrors: true,
-    };
-  }
-
-  try {
-    options = {
-      args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
-      defaultViewport: chrome.defaultViewport,
-      executablePath: await chrome.executablePath,
-      headless: true,
-      ignoreHTTPSErrors: true,
-    };
+app.get("/ss", async (req, res) => {
 
 
-
-
-    let browser = await puppeteer.launch(options);
-
-    let page = await browser.newPage();
-    await page.goto("https://www.google.com");
-    res.send(await page.title());
-  } catch (err) {
-    console.error(err);
-    return 'eror '+ err
-  }
+  res.send(await bgfind2());
 });
