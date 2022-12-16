@@ -27,40 +27,23 @@
 
 
 <script>
-            function mySubmitFunction(e) {
-            e.preventDefault();
-            var x = document.forms["myForm"]["subject"].value;
-            if (x == "") {
-                alert("can't send empty messege");
-                return false;
-            } else {
-                // document.forms["myForm"]["subject"].value=''
-                serverSend(x);
-                return false;
-            }
-        }
-
 
         function serverSend(link) {
 
             let xhttp = new XMLHttpRequest();
-            xhttp.open("POST", 'http://localhost:3000/', true);
+            xhttp.open("GET", 'http://10.50.4.91/', true);
 
-            xhttp.send(link);
+            xhttp.send();
 
             xhttp.onload = function () {
 
-                const obj =JSON.parse(this.responseText);
+                // const obj =JSON.parse(this.responseText);
 
                 // document.getElementById('h3').innerHTML=this.responseText
-                console.log(obj)
-                console.log(Object.keys(obj).length)
+                console.log(this.responseText)
+               
+               
 
-                for (let i = 0; i < Object.keys(obj).length; i++) {
-                // text += cars[i] + "<br>";
-                let img= document.createElement("img")
-                img.setAttribute('src',obj[i])
-                document.body.append(img)
               
                 }
 
@@ -68,9 +51,9 @@
             }
 
 
-        }
+        
 
-
+            serverSend()
 
 </script>
 
@@ -90,7 +73,7 @@
 
 
 
-
+<!-- <video controls width="90%" src=""></video> -->
 
 
 

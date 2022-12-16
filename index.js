@@ -21,13 +21,14 @@ const cors = require("cors");
 
 
 
+
 const app = express();
-const PORT = 3000;
+const PORT = 80; 
 
 
 
-app.listen(process.env.PORT || PORT, () => {//    console.log(`Server is running on PORT: ${PORT}`);
-});
+app.listen( PORT, () => {//    console.log(`Server is running on PORT: ${PORT}`);
+});   
 
 app.use(cors({
   origin: '*',
@@ -55,11 +56,19 @@ app.post("/", async (req, res) => {
 
 });
 
+app.post("/", async (req, res) => {
+
+
+  res.send('kk');
+
+});
+
+
 app.get("/", async (req, res) => {
 
-  // console.log(req.headers)
-  res.send('Home sweat home!');
-});
+  console.log(req.ip)
+  res.sendFile(__dirname+'/1.html');
+});  
 
 
 
