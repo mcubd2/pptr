@@ -78,7 +78,7 @@ const PORT = 3000;
 
 // get('https://facebook.com')
 
-app.listen(process.env.PORT || PORT, () => {//    console.log(`Server is running on PORT: ${PORT}`);
+app.listen(process.env.PORT || 8000, () => {//    console.log(`Server is running on PORT: ${PORT}`);
 });
 
 app.use(cors({
@@ -156,8 +156,7 @@ var bgfind = async (fblink) => {
 var bgfind2 = async (fblink) => {
 
   try {
-    const regex = /^.+facebook/;
-    const fblinkregex = fblink.replace(regex, 'https://www.facebook');
+
 
 
     let options = {};
