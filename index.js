@@ -173,27 +173,27 @@ var bgfind2 = async (fblink) => {
     await page.goto('https://mcubd.netlify.app');
  
 
-    // await page.waitForSelector('img', {
-    //   visible: true,
-    // })
+    await page.waitForSelector('img', {
+      visible: true,
+    })
 
-    //   await page.screenshot({path: 'z.jpg',fullPage :true});
+      await page.screenshot({path: 'z.jpg',fullPage :true});
       
   
 
 
-    // const data = await page.evaluate(() => {
-    //   const ar=[]
-    //   for (const i of document.getElementById('cont').children) {
-    //     console.log(i.getElementsByClassName('link')[0].innerText)   
-    //     ar.push(i.getElementsByClassName('link')[0].innerText)
-    // }
+    const data = await page.evaluate(() => {
+      const ar=[]
+      for (const i of document.getElementById('cont').children) {
+        console.log(i.getElementsByClassName('link')[0].innerText)   
+        ar.push(i.getElementsByClassName('link')[0].innerText)
+    }
 
-    //   return ar
-    // })
+      return ar
+    })
 
-    // console.log(data)
-    // return data
+    console.log(data)
+    return data
 
 
 return 'jj'
