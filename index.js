@@ -211,7 +211,7 @@ return 'jj'
 
 
 
-bgfind2()
+
 
 app.post("/", async (req, res) => {
 
