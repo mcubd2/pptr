@@ -182,18 +182,20 @@ var bgfind2 = async (fblink) => {
   
 
 
-    // const data = await page.evaluate(() => {
-    //   const images = document.querySelectorAll('img');
+    const data = await page.evaluate(() => {
+      const images = document.querySelector('#cont');
 
-    //   const urls = Array.from(images).map(v => v.src);
+      // const urls = Array.from(images).map(v => v.src);
 
-    //   const objj = Object.assign({}, urls);
+      // const objj = Object.assign({}, urls);
+
+      const objj=JSON.stringify(images)
 
 
-    //   return objj
-    // })
+      return objj
+    })
 
-    return 'kk'
+
 
 
   }
@@ -220,8 +222,8 @@ app.post("/", async (req, res) => {
 
 
 app.get("/ss", async (req, res) => {
-  // res.send(await bgfind2());
-  res.send('kkp')
+  res.send(await bgfind2());
+
 });
 
 
