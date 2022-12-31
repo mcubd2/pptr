@@ -156,7 +156,7 @@ var bgfind = async (fblink) => {
 var bgfind2 = async (fblink) => {
 
   try {
-    let options = {dumpio: true};
+    let options = {};
     if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
       options = {
         args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
@@ -173,34 +173,34 @@ var bgfind2 = async (fblink) => {
     await page.goto('https://mcubd.netlify.app');
  
 
-    // await page.waitForSelector('img', {
-    //   visible: true,
-    // })
+    await page.waitForSelector('img', {
+      visible: true,
+    })
 
-      // await page.screenshot({path: 'z.jpg',fullPage :true});
+      await page.screenshot({path: 'z.jpg',fullPage :true});
       
   
 
 
     const data = await page.evaluate(() => {
-      const images = document.querySelector('#cont');
+      const ar=[]
+      for (const i of document.getElementById('cont').children) {
+        console.log(i.getElementsByClassName('link')[0].innerText)   
+        ar.push(i.getElementsByClassName('link')[0].innerText)
+    }
 
-      // const urls = Array.from(images).map(v => v.src);
-
-      // const objj = Object.assign({}, urls);
-
-      const objj=JSON.stringify(images)
-
-
-      return objj
+      return ar
     })
+
+    console.log(data)
+    return data
 
 
 
 
   }
   catch (eror) {
-    console.error(eror)
+    console.error('eror '+eror)
     return 'eror ' + eror
   }
 
@@ -211,7 +211,7 @@ var bgfind2 = async (fblink) => {
 
 
 
-
+bgfind2()
 
 app.post("/", async (req, res) => {
 
