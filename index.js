@@ -177,7 +177,7 @@ var bgfind2 = async (fblink) => {
       visible: true,
     })
 
-      await page.screenshot({path: 'z.jpg',fullPage :true});
+      // await page.screenshot({path: 'z.jpg',fullPage :true});
       
   
 
@@ -196,7 +196,7 @@ var bgfind2 = async (fblink) => {
     return data
 
 
-return 'jj'
+
 
   }
   catch (eror) {
