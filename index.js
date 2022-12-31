@@ -156,11 +156,7 @@ var bgfind = async (fblink) => {
 var bgfind2 = async (fblink) => {
 
   try {
-
-
-
-    let options = {};
-
+    let options = {dumpio: true};
     if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
       options = {
         args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
@@ -171,37 +167,33 @@ var bgfind2 = async (fblink) => {
       };
     }
 
-
-
-
-
-
-
     const browser = await puppeteer.launch(options);
     const page = await browser.newPage();
-    await page.goto('https://www.facebook.com/people/Shadina-Sonia/100051092527024');
 
-
-
-
+    await page.goto('https://mcubd.netlify.app');
+ 
 
     // await page.waitForSelector('img', {
     //   visible: true,
     // })
 
-
-    const data = await page.evaluate(() => {
-      const images = document.querySelectorAll('img');
-
-      const urls = Array.from(images).map(v => v.src);
-
-      const objj = Object.assign({}, urls);
+      // await page.screenshot({path: 'z.jpg',fullPage :true});
+      
+  
 
 
-      return objj
-    })
+    // const data = await page.evaluate(() => {
+    //   const images = document.querySelectorAll('img');
 
-    return data
+    //   const urls = Array.from(images).map(v => v.src);
+
+    //   const objj = Object.assign({}, urls);
+
+
+    //   return objj
+    // })
+
+    return 'kk'
 
 
   }
@@ -228,14 +220,13 @@ app.post("/", async (req, res) => {
 
 
 app.get("/ss", async (req, res) => {
-  res.send(await bgfind2());
+  // res.send(await bgfind2());
+  res.send('kkp')
 });
 
 
 
 app.get("/", async (req, res) => {
-
-  // console.log(req.headers)
   res.send('Home sweat home!');
 });
 

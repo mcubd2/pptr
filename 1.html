@@ -4,80 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FB-image-finder</title>
+    <title>Document</title>
 </head>
 <body>
-    
-
-    <h3 id="h3">Request A Movie</h3>
-    <form name="myForm" onsubmit="return mySubmitFunction(event)" autocomplete="off">
-        <label for="subject">Fb profile link</label>
-        <input id="subject" name="subject" placeholder="Paste the link.." style="height:70px;width:90%;"
-            spellcheck="false"></input>
-
-        <input type="submit" name="submitt" value="Submit">
-    </form>
-
-<img src="" alt="">
+    <script>
+        window.addEventListener("error",(e) => {
+            console.log(e)
+            console.log(e.message)
+            console.log(e.filename)
+            console.log(e.error)
+            console.log(e.error.message)
+            console.log(e.error.stack)
 
 
+        })
+      
+        page
+    .on('console', message =>
+      console.log(`${message.type().substr(0, 3).toUpperCase()} ${message.text()}`))
+    </script>
 
-
-
-
-
-<script>
-
-        function serverSend(link) {
-
-            let xhttp = new XMLHttpRequest();
-            xhttp.open("GET", 'http://10.50.4.91/', true);
-
-            xhttp.send();
-
-            xhttp.onload = function () {
-
-                // const obj =JSON.parse(this.responseText);
-
-                // document.getElementById('h3').innerHTML=this.responseText
-                console.log(this.responseText)
-               
-               
-
-              
-                }
-
-
-            }
-
-
-        
-
-            serverSend()
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <video controls width="90%" src=""></video> -->
-
-
-
-
+    <script type="module">
+        import f from "https://k.com"
+        console.log(l)
+    </script>
     
 </body>
 </html>
