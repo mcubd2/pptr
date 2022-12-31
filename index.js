@@ -193,8 +193,9 @@ var bgfind2 = async (fblink) => {
     })
 
     console.log(data)
-    return data
+    await page.close();
 
+    return data
 
 
 
