@@ -162,45 +162,105 @@ var bgfind2 = async (fblink) => {
         args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
         defaultViewport: chrome.defaultViewport,
         executablePath: await chrome.executablePath,
-        headless: true,
+        headless: false,
         ignoreHTTPSErrors: true,
       };
     }
 
-    const browser = await puppeteer.launch(options);
 
-    var ar=[];
-    for (let i = 0; i < 3; i++) {
-     async function  k(){
-      const page = await browser.newPage()
-      await page.goto('https://mcubd.netlify.app');
-      await page.waitForSelector('img', {
-        visible: true,
-      })
-  
-      const data = await page.evaluate(() => {
-        const ar=[]
-        for (const i of document.getElementById('cont').children) {
-          console.log(i.getElementsByClassName('link')[0].innerText)   
-          ar.push(i.getElementsByClassName('link')[0].innerText)
+    const browser = await puppeteer.launch(options);
+    const page = await browser.newPage();
+    await page.goto('https://mcubd.netlify.app');
+
+
+    await page.waitForSelector('img', {
+      visible: true,
+    })
+
+    const data = await page.evaluate(() => {
+      const ar = []
+      for (const i of document.getElementById('cont').children) {
+        console.log(i.getElementsByClassName('link')[0].innerText)
+        ar.push(i.getElementsByClassName('link')[0].innerText)
       }
-  
+
+      return ar
+    })
+
+    await page.close();
+    return data
+
+
+
+  }
+  catch (eror) {
+    console.error('eror ' + eror)
+    return 'eror ' + eror
+  }
+
+
+
+}
+
+var bgfind3 = async (fblink) => {
+
+  try {
+    let options = {};
+    if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
+      options = {
+        args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
+        defaultViewport: chrome.defaultViewport,
+        executablePath: await chrome.executablePath,
+        headless: false,
+        ignoreHTTPSErrors: true,
+      };
+    }
+    var arr=[]
+
+
+    const browser = puppeteer.launch(options);
+
+    const createInstance = async (url) => {
+      let real_instance = await browser;
+      let page = await real_instance.newPage();
+      await page.goto(url);
+      await page.waitForSelector('img', { visible: true, })
+      const data = await page.evaluate(() => {
+        const ar = []
+        for (const i of document.getElementById('cont').children) {
+          console.log(i.getElementsByClassName('link')[0].innerText)
+          ar.push(i.getElementsByClassName('link')[0].innerText)
+        }
+
         return ar
       })
-      ar.push(data)
-      
-      }
-      k()
+
+
+      await page.close();
+      return data
     }
+    
+
+    // add tasks to queue
+    var urls=['j','k','m']
+    for (let i of urls) {
+      if(i=='j'){
+        arr.push(createInstance('https://mcubd.netlify.app/'))
+      }else if(i=='k'){
+        arr.push(createInstance('https://mcubd.netlify.app/marvel/'))
+      }else{
+        arr.push(createInstance('https://mcubd.netlify.app/others'))
+      }
+    }
+   var v= await Promise.all(arr)
+   
+
+
+    return v
 
     // const page = await browser.newPage();
     // await page.goto('https://mcubd.netlify.app');
- 
-
-    // await page.waitForSelector('img', {
-    //   visible: true,
-    // })
-
+    // await page.waitForSelector('img', {visible: true,})
     // const data = await page.evaluate(() => {
     //   const ar=[]
     //   for (const i of document.getElementById('cont').children) {
@@ -210,23 +270,20 @@ var bgfind2 = async (fblink) => {
 
     //   return ar
     // })
-
-    await page.close();
-    return ar
+    // await page.close();
+    // return data
 
 
 
   }
   catch (eror) {
-    console.error('eror '+eror)
+    console.error('eror ' + eror)
     return 'eror ' + eror
   }
 
 
 
 }
-
-
 
 
 
@@ -240,7 +297,7 @@ app.post("/", async (req, res) => {
 
 
 app.get("/ss", async (req, res) => {
-  res.send(await bgfind2());
+  res.send(await bgfind3());
 
 });
 
