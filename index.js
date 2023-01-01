@@ -296,7 +296,7 @@ app.post("/", async (req, res) => {
 });
 
 
-app.get("/ss", async (req, res) => {
+app.get("/mvlinks", async (req, res) => {
   res.send(await bgfind3());
 
 });
