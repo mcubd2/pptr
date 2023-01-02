@@ -255,7 +255,8 @@ app.post("/", async (req, res) => {
 
 
 app.get("/mvlinks", async (req, res) => {
-  var b= await collec.updateMany({}, { $set: { links: await bgfind3() ,date:new Date().toLocaleDateString() } });
+  var b= await collec.updateMany({}, { $set: { links: JSON.stringify( await bgfind3()) ,date:new Date().toLocaleDateString() } });
+  // console.log(typeof(JSON.stringify( await bgfind3())))
 
   res.send(JSON.stringify(b) +' '+  await bgfind3() );
 
