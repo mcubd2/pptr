@@ -8,8 +8,10 @@
 // import bodyParser from 'body-parser'
 
 const express = require("express");
-// const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 const cors = require("cors");
+
+
 
 
 
@@ -25,58 +27,8 @@ if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
   puppeteer = require("puppeteer");
 }
 
-
-
-
-
-
 const app = express();
 const PORT = 3000;
-
-
-// async function get(url){
-//     try{
-//         const res=await axios.get(url)
-//         const $= cheerio.load(res.data)
-//         const genre=$('body').text()
-//         console.log(genre)
-//         console.log(res)
-
-
-
-//         return genre
-
-//     }
-//     catch(eror){
-//         console.error(eror)
-//     }
-// }
-
-// var options = {
-//     url: 'https://www.facebook.com/itsnayan007',
-//     headers: {
-//       'content-type': 'application/json',
-//       'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
-//     },
-
-//   };
-
-// var u
-// request(options,(eror,response,html)=>{
-
-// if(!eror && response.statusCode==200){
-//     const $=cheerio.load(html)
-//     // const final=$('body').children('div').html()
-//     const final=$('body').html()
-//     console.log(final)
-//      u =final
-// }
-
-
-// })
-
-
-// get('https://facebook.com')
 
 app.listen(process.env.PORT || 8000, () => {//    console.log(`Server is running on PORT: ${PORT}`);
 });
@@ -88,6 +40,11 @@ app.use(cors({
 // app.set('trust proxy', true)
 // app.use(express.json())
 // app.use(bodyParser.text({ type: "*/*" }));
+
+var DB = 'mongodb+srv://zayn:1221@cluster0.fzxdoyt.mongodb.net/db1?retryWrites=true&w=majority'; mongoose.connect(DB)
+  .then(() => { console.log('con suc') }).catch((err) => { console.log(err) })
+var schema = new mongoose.Schema({ name: String, ram: String, device: String, platform: String, date: String, ipad: String, num: String, browserr: String })
+var collec = new mongoose.model('mvlink', schema)
 
 
 
