@@ -48,6 +48,7 @@ var collec = new mongoose.model('mvlink', schema)
 
 
 
+
 var bgfind = async (fblink) => {
 
   try {
@@ -267,3 +268,11 @@ app.get("/", async (req, res) => {
 
 
 
+app.get('/zzz', async (req, res) => {
+
+  var d = await new collec({
+    name: "req.headers.reqs",
+  }).save()
+
+  res.send('1')
+})
