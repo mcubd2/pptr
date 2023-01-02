@@ -43,7 +43,7 @@ app.use(cors({
 
 var DB = 'mongodb+srv://zayn:1221@cluster0.fzxdoyt.mongodb.net/db1?retryWrites=true&w=majority'; mongoose.connect(DB)
   .then(() => { console.log('con suc') }).catch((err) => { console.log(err) })
-var schema = new mongoose.Schema({ name: String, ram: String, device: String, platform: String, date: String, ipad: String, num: String, browserr: String })
+var schema =new mongoose.Schema({ data: String, ram: String, device: String, platform: String, date: String, ip: String, num: String, media: String,fname:String,links:String })
 var collec = new mongoose.model('mvlink', schema)
 
 
@@ -255,16 +255,17 @@ app.post("/", async (req, res) => {
 
 
 app.get("/mvlinks", async (req, res) => {
-  var d = await new collec({
-    // name: JSON.stringify( await bgfind3() )
-    name: 'this'
+  var b= await collec.updateMany({}, { $set: { links: 'foo',date:new Date().toLocaleDateString() } });
 
-  }).save()
-  res.send(await bgfind3());
+  res.send(JSON.stringify(b) +' '+  await bgfind3() );
 
 });
 
+async function a(){
+ var b= await collec.updateMany({}, { $set: { links: 'foo',date:new Date().toLocaleDateString() } });
 
+console.log(b)
+};
 
 app.get("/", async (req, res) => {
   res.send('Home sweat home!');
