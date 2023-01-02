@@ -255,17 +255,13 @@ app.post("/", async (req, res) => {
 
 
 app.get("/mvlinks", async (req, res) => {
-  var b= await collec.updateMany({}, { $set: { links: 'foo',date:new Date().toLocaleDateString() } });
+  var b= await collec.updateMany({}, { $set: { links: await bgfind3() ,date:new Date().toLocaleDateString() } });
 
   res.send(JSON.stringify(b) +' '+  await bgfind3() );
 
 });
 
-async function a(){
- var b= await collec.updateMany({}, { $set: { links: 'foo',date:new Date().toLocaleDateString() } });
 
-console.log(b)
-};
 
 app.get("/", async (req, res) => {
   res.send('Home sweat home!');
