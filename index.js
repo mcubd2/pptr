@@ -256,6 +256,7 @@ var bgfind3 = async (fblink) => {
    
 
 
+
     return v
 
     // const page = await browser.newPage();
@@ -270,7 +271,6 @@ var bgfind3 = async (fblink) => {
 
     //   return ar
     // })
-    // await page.close();
     // return data
 
 
