@@ -256,7 +256,9 @@ app.post("/", async (req, res) => {
 
 app.get("/mvlinks", async (req, res) => {
   var d = await new collec({
-    name: JSON.stringify( await bgfind3() )
+    // name: JSON.stringify( await bgfind3() )
+    name: 'this'
+
   }).save()
   res.send(await bgfind3());
 
