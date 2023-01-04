@@ -10,6 +10,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const moment=require('moment-timezone');
+
 
 
 
@@ -44,7 +46,7 @@ app.use(cors({
 var DB = 'mongodb+srv://zayn:1221@cluster0.fzxdoyt.mongodb.net/db1?retryWrites=true&w=majority'; mongoose.connect(DB)
   .then(() => { console.log('con suc') }).catch((err) => { console.log(err) })
 var schema =new mongoose.Schema({ data: String, ram: String, device: String, platform: String, date: String, ip: String, num: String, media: String,fname:String,links:String })
-var collec = new mongoose.model('mvlink', schema)
+var collec = new mongoose.model('multis', schema)
 
 
 
@@ -213,25 +215,7 @@ var bgfind3 = async (fblink) => {
    var v= await Promise.all(arr)
    
 
-
-
     return v
-
-    // const page = await browser.newPage();
-    // await page.goto('https://mcubd.netlify.app');
-    // await page.waitForSelector('img', {visible: true,})
-    // const data = await page.evaluate(() => {
-    //   const ar=[]
-    //   for (const i of document.getElementById('cont').children) {
-    //     console.log(i.getElementsByClassName('link')[0].innerText)   
-    //     ar.push(i.getElementsByClassName('link')[0].innerText)
-    // }
-
-    //   return ar
-    // })
-    // return data
-
-
 
   }
   catch (eror) {
@@ -247,21 +231,24 @@ var bgfind3 = async (fblink) => {
 
 
 app.post("/", async (req, res) => {
-
-
   res.send(await bgfind(req.headers.data));
-
 });
 
 
 app.get("/mvlinks", async (req, res) => {
-  var b= await collec.updateMany({}, { $set: { links: JSON.stringify( await bgfind3()) ,date:new Date().toLocaleDateString() } });
+  // var b= await collec.updateMany({}, { $set: { links: JSON.stringify( await bgfind3()) ,date:moment().tz('Asia/dhaka').format('h:m a,D/M/YY') } });
   // console.log(typeof(JSON.stringify( await bgfind3())))
+  
 
-  res.send(JSON.stringify(b) +' '+  await bgfind3() );
+  // res.send(JSON.stringify(b) +' '+  await bgfind3() );
+  res.send( await bgfind3() );
+
 
 });
 
+
+
+// console.log(moment().tz('Asia/dhaka').format('h:m a,D/M/YY'))
 
 
 app.get("/", async (req, res) => {
@@ -271,11 +258,3 @@ app.get("/", async (req, res) => {
 
 
 
-app.get('/zzz', async (req, res) => {
-
-  var d = await new collec({
-    name: "req.headers.reqs",
-  }).save()
-
-  res.send('1')
-})
