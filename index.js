@@ -11,6 +11,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const moment=require('moment-timezone');
+const  fetch =require('node-fetch')
 
 
 
@@ -236,14 +237,15 @@ app.post("/", async (req, res) => {
 
 
 app.get("/uplinks", async (req, res) => {
-  // var b= await collec.updateMany({}, { $set: { links: JSON.stringify( await bgfind3()) ,date:moment().tz('Asia/dhaka').format('h:m a,D/M/YY') } });
+  if(JSON.stringify(await bgfind3())[0] == '['){
+  var b= await collec.updateMany({}, { $set: { links: JSON.stringify( await bgfind3()) ,date:moment().tz('Asia/dhaka').format('h:m a,D/M/YY') } });
   // console.log(typeof(JSON.stringify( await bgfind3())))
   
 
-  // res.send(JSON.stringify(b) +' '+  await bgfind3() );
-  res.send( await bgfind3() );
-
-
+  res.send(JSON.stringify(b) +' '+  await bgfind3() );
+  }else{
+  res.send('something wrong!!!');
+  }
 });
 
 
@@ -254,7 +256,6 @@ app.get("/uplinks", async (req, res) => {
 app.get("/", async (req, res) => {
   res.send('Home sweat home!');
 });
-
 
 
 
