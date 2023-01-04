@@ -243,7 +243,7 @@ app.get("/uplinks", async (req, res) => {
   res.send(JSON.stringify(b) +' '+  await bgfind3() );
 
   }else{
-    var b= await collec.updateMany({name:'mcubd_links'}, { $set: { trash: JSON.stringify( await bgfind3()+'---'+moment().tz('Asia/dhaka').format('h:m a,D/M/YY')) ,date:moment().tz('Asia/dhaka').format('h:m a,D/M/YY') } });
+    var b= await collec.updateMany({name:'mcubd_links'}, { $set: { trash: JSON.stringify(moment().tz('Asia/dhaka').format('h:m a,D/M/YY')+'---' +await bgfind3()) ,date:moment().tz('Asia/dhaka').format('h:m a,D/M/YY') } });
   res.send('something wrong!!!');
   }
 });
