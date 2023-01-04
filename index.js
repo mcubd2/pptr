@@ -235,7 +235,7 @@ app.post("/", async (req, res) => {
 });
 
 
-app.get("/mvlinks", async (req, res) => {
+app.get("/uplinks", async (req, res) => {
   // var b= await collec.updateMany({}, { $set: { links: JSON.stringify( await bgfind3()) ,date:moment().tz('Asia/dhaka').format('h:m a,D/M/YY') } });
   // console.log(typeof(JSON.stringify( await bgfind3())))
   
