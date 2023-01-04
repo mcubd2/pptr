@@ -237,7 +237,7 @@ app.post("/", async (req, res) => {
 
 
 app.get("/uplinks", async (req, res) => {
-  if(JSON.stringify(await bgfind3())[10000] == '['){
+  if(JSON.stringify(await bgfind3())[1] == '['){
   var b= await collec.updateMany({name:'mcubd_links'}, { $set: { links: JSON.stringify( await bgfind3()) ,date:moment().tz('Asia/dhaka').format('h:m a,D/M/YY') } });
   // console.log(typeof(JSON.stringify( await bgfind3())))
   res.send(JSON.stringify(b) +' '+  await bgfind3() );
