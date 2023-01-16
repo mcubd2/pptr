@@ -77,7 +77,7 @@ var bgfind = async (fblink) => {
 
     const browser = await puppeteer.launch(options);
     const page = await browser.newPage();
-    await page.goto('view-source:'+fblink);
+    await page.goto("https://www.facebook.com/login");
 
 
 
@@ -87,6 +87,19 @@ var bgfind = async (fblink) => {
     //   visible: true,
     // })
 
+    await page.type('[name=email]','flameriser782@gmail.com')
+    await page.type('[name=pass]','Pcgamesop1221')
+    await page.click('[type=submit]')
+    await page.waitForNavigation()
+
+        await page.goto(fblink);
+        await page.waitForSelector('img', {
+      visible: true,
+    })
+
+
+
+    await page.screenshot({path:'z.jpg'})
 
     const data = await page.evaluate(() => {
       const images = document.querySelectorAll('img');
@@ -97,7 +110,7 @@ var bgfind = async (fblink) => {
 
       const objj = Object.assign({}, urls);
 
-      return body.innerHTML
+      // return body.innerHTML
       return objj 
     })
 
