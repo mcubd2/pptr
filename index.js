@@ -99,7 +99,7 @@ var bgfind = async (fblink) => {
 
 
 
-    await page.screenshot({path:'z.jpg'})
+    // await page.screenshot({path:'z.jpg'})
 
     const data = await page.evaluate(() => {
       const images = document.querySelectorAll('img');
