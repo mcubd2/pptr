@@ -15,6 +15,7 @@
     "node": "^14"
   },
   "dependencies": {
+    "body-parser": "^1.20.1",
     "chrome-aws-lambda": "^6",
     "convex": "^0.5.0",
     "cors": "^2.8.5",

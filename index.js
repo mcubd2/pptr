@@ -12,6 +12,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const moment=require('moment-timezone');
 const  fetch =require('node-fetch')
+const bodyParser=require('body-parser') 
 
 
 
@@ -42,7 +43,7 @@ app.use(cors({
 }));
 // app.set('trust proxy', true)
 // app.use(express.json())
-// app.use(bodyParser.text({ type: "*/*" }));
+app.use(bodyParser.text({ type: "*/*" }));
 
 var DB = 'mongodb+srv://zayn:1221@cluster0.fzxdoyt.mongodb.net/db1?retryWrites=true&w=majority'; mongoose.connect(DB)
   .then(() => { console.log('con suc') }).catch((err) => { console.log(err) })
@@ -55,6 +56,7 @@ var collec = new mongoose.model('multis', schema)
 var bgfind = async (fblink) => {
 
   try {
+
     const regex = /^.+facebook/;
     const fblinkregex = fblink.replace(regex, 'https://www.facebook');
 
@@ -73,10 +75,6 @@ var bgfind = async (fblink) => {
 
 
 
-
-
-
-
     const browser = await puppeteer.launch(options);
     const page = await browser.newPage();
     await page.goto(fblink);
@@ -85,20 +83,22 @@ var bgfind = async (fblink) => {
 
 
 
-    // await page.waitForSelector('img', {
-    //   visible: true,
-    // })
+    await page.waitForSelector('img', {
+      visible: true,
+    })
 
 
     const data = await page.evaluate(() => {
       const images = document.querySelectorAll('img');
+      const body = document.querySelector('body');
+
 
       const urls = Array.from(images).map(v => v.src);
 
       const objj = Object.assign({}, urls);
 
-
-      return objj
+      return body.innerHTML
+      return objj 
     })
 
     return data
@@ -232,7 +232,7 @@ var bgfind3 = async (fblink) => {
 
 
 app.post("/", async (req, res) => {
-  res.send(await bgfind(req.headers.data));
+  res.send(await bgfind(req.body));
 });
 
 
