@@ -144,7 +144,7 @@ var bgfind2 = async (fblink) => {
 
     const browser = await puppeteer.launch(options);
     const page = await browser.newPage();
-    await page.goto('https://mcubd.netlify.app');
+    await page.goto('https://nodebd.vercel.app/z');
 
 
     await page.waitForSelector('img', {
@@ -262,7 +262,11 @@ app.get("/uplinks", async (req, res) => {
 });
 
 
-
+app.get('/z',(req,res) => {
+ setTimeout(() => {
+  res.send('kk')
+ }, 8000);
+})
 // console.log(moment().tz('Asia/dhaka').format('h:m a,D/M/YY'))
 
 
