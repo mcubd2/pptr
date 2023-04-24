@@ -248,6 +248,9 @@ app.post("/", async (req, res) => {
   res.send(await bgfind(req.body));
 });
 
+app.get('links',async ()=>{
+  res.send(await bgfind3())
+})
 
 app.get("/uplinks", async (req, res) => {
   if(JSON.stringify(await bgfind3())[1] == '['){
@@ -274,5 +277,36 @@ app.get("/", async (req, res) => {
   res.send('Home sweat home!');
 });
 
+app.get('/fb',async (req,res) => {
+  var g= await fetch(req.query['link'],{
+    method:"GET", 
+    headers:{
+      // ":authority":"www.facebook.com",
+      // ":method":"GET",
+      // ":path":"/",
+      // ":scheme":"https",
+      "accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+      "accept-encoding":"gzip, deflate, br",
+      "accept-language":"en-GB,en-US;q=0.9,en;q=0.8,bn;q=0.7",
+      "cache-control":"max-age=0",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36",
+        "sec-ch-ua":'"Not?A_Brand";v="8", "Chromium";v="108", "Google Chrome";v="108"',
+        "sec-ch-ua-platform":"Windows"
+
+      }
+  })
+
+console.log()
+
+  res.send(await g.text())
+ 
+})
+
+async function a(){
+var g= await fetch('https://www.facebook.com/profile.php?id=100007193401802')
+
+console.log(await g.text())
+
+}
 
 
