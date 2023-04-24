@@ -248,7 +248,7 @@ app.post("/", async (req, res) => {
   res.send(await bgfind(req.body));
 });
 
-app.get('links',async ()=>{
+app.get('/links',async ()=>{
   res.send(await bgfind3())
 })
 
