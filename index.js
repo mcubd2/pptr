@@ -259,6 +259,11 @@ var gdrive = async (gdlink) => {
 
 
     const browser = puppeteer.launch(options);
+      let real_instance = await browser;
+      let page = await real_instance.newPage();
+    await page.goto("google.com");
+      await page.close();
+      return "hdkdoup"
 
     const createInstance = async (url) => {
       
