@@ -267,7 +267,7 @@ var gdrive = async (gdlink) => {
       // await page.waitForSelector('form', { visible: true, })
       const data = await page.evaluate(() => {
 
-        return document.getElementsByTagName("form")
+        return "document.getElementsByTagName()"
         const ar = []
         for (const i of document.getElementById('cont').children) {
           console.log(i.getElementsByClassName('link')[0].innerText)
@@ -350,7 +350,7 @@ app.get('/z',(req,res) => {
 
 
 app.get("/", async (req, res) => {
-  res.send('Home sweat hommp!');
+  res.send('Home sweat hommop!');
 });
 
 app.get('/fb',async (req,res) => {
