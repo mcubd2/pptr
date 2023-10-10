@@ -350,7 +350,7 @@ app.get('/z',(req,res) => {
 
 
 app.get("/", async (req, res) => {
-  res.send('Home sweat home!');
+  res.send('Home sweat hom!');
 });
 
 app.get('/fb',async (req,res) => {
