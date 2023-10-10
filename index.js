@@ -282,7 +282,7 @@ var gdrive = async (gdlink) => {
       return data
     }
 
-    createInstance();
+   return  createInstance();
     return;
 
     // add tasks to queue
