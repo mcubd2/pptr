@@ -321,8 +321,11 @@ app.post("/", async (req, res) => {
 app.get('/links',async (req,res)=>{
   res.send(await bgfind3())
 })
-app.get('/link',async (req,res)=>{
+app.get('/go',async (req,res)=>{
   res.send(await gdrive())
+})
+app.get('/yt',async (req,res)=>{
+  res.send("await gdrive()")
 })
 
 app.get("/uplinks", async (req, res) => {
