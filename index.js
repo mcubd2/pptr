@@ -241,6 +241,76 @@ var bgfind3 = async (fblink) => {
 
 }
 
+//---------------------
+var gdrive = async (gdlink) => {
+
+  try {
+    let options = {};
+    if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
+      options = {
+        args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
+        defaultViewport: chrome.defaultViewport,
+        executablePath: await chrome.executablePath,
+        headless: false,
+        ignoreHTTPSErrors: true,
+      };
+    }
+    var arr=[]
+
+
+    const browser = puppeteer.launch(options);
+
+    const createInstance = async (url) => {
+      let real_instance = await browser;
+      let page = await real_instance.newPage();
+      await page.goto("https://drive.google.com/u/4/uc?id=1PEkrNN4T2ZoqwDrpMU9Oeq8Go8AytqLw&export=download");
+      await page.waitForSelector('form', { visible: true, })
+      const data = await page.evaluate(() => {
+
+        return document.getElementsByTagName("UL")[0].innerHTML
+        const ar = []
+        for (const i of document.getElementById('cont').children) {
+          console.log(i.getElementsByClassName('link')[0].innerText)
+          ar.push(i.getElementsByClassName('link')[0].innerText)
+        }
+
+        return ar
+      })
+
+
+      await page.close();
+      return data
+    }
+
+    createInstance()
+    return;
+
+    // add tasks to queue
+    var urls=['j','k','m']
+    for (let i of urls) {
+      if(i=='j'){
+        arr.push(createInstance('https://mcubd.netlify.app/'))
+      }else if(i=='k'){
+        arr.push(createInstance('https://mcubd.netlify.app/marvel/'))
+      }else{
+        arr.push(createInstance('https://mcubd.netlify.app/others'))
+      }
+    }
+   var v= await Promise.all(arr)
+   
+
+    return v
+
+  }
+  catch (eror) {
+    console.error('eror ' + eror)
+    return 'eror ' + eror
+  }
+
+
+
+}
+
 
 
 
@@ -250,6 +320,9 @@ app.post("/", async (req, res) => {
 
 app.get('/links',async (req,res)=>{
   res.send(await bgfind3())
+})
+app.get('/link',async (req,res)=>{
+  res.send(await gdrive())
 })
 
 app.get("/uplinks", async (req, res) => {
