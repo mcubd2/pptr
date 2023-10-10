@@ -8,12 +8,12 @@
 // import bodyParser from 'body-parser'
 
 const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const moment=require('moment-timezone');
-const  fetch =require('node-fetch')
-const bodyParser=require('body-parser') 
-const request = require('request');
+// const mongoose = require("mongoose");
+// const cors = require("cors");
+//const moment=require('moment-timezone');
+//const  fetch =require('node-fetch')
+// const bodyParser=require('body-parser') 
+// const request = require('request');
 
 
 
@@ -332,12 +332,12 @@ app.get('/links',async (req,res)=>{
   res.send(await bgfind3())
 })
 app.get('/go',async (req,res)=>{
-  request('https://drive.google.com/uc?export=download&id=1PEkrNN4T2ZoqwDrpMU9Oeq8Go8AytqLw', function (error, response, body) {
+ // request('https://drive.google.com/uc?export=download&id=1PEkrNN4T2ZoqwDrpMU9Oeq8Go8AytqLw', function (error, response, body) {
  // console.log(response.statusCode); 
  // console.log('body:', body);
-    if( await response.statusCode==200){
+   // if( await response.statusCode==200){
       // res.send(await body)
-    }
+   // }
     res.send("--90")
 });
   
