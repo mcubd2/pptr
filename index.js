@@ -333,10 +333,10 @@ app.get('/links',async (req,res)=>{
 })
 app.get('/go',async (req,res)=>{
   request('https://drive.google.com/uc?export=download&id=1PEkrNN4T2ZoqwDrpMU9Oeq8Go8AytqLw', function (error, response, body) {
-  console.log(response.statusCode); 
-  console.log('body:', body);
-    if(response.statusCode==200){
-      res.send(body)
+ // console.log(response.statusCode); 
+ // console.log('body:', body);
+    if( await response.statusCode==200){
+      res.send(await body)
     }
 });
   
