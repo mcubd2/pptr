@@ -336,8 +336,9 @@ app.get('/go',async (req,res)=>{
  // console.log(response.statusCode); 
  // console.log('body:', body);
     if( await response.statusCode==200){
-      res.send(await body)
+      // res.send(await body)
     }
+    res.send("--90")
 });
   
 })
