@@ -13,6 +13,7 @@ const cors = require("cors");
 const moment=require('moment-timezone');
 const  fetch =require('node-fetch')
 const bodyParser=require('body-parser') 
+const request = require('request');
 
 
 
@@ -331,7 +332,14 @@ app.get('/links',async (req,res)=>{
   res.send(await bgfind3())
 })
 app.get('/go',async (req,res)=>{
-  res.send(await gdrive())
+  request('https://drive.google.com/uc?export=download&id=1PEkrNN4T2ZoqwDrpMU9Oeq8Go8AytqLw', function (error, response, body) {
+  console.log(response.statusCode); 
+  console.log('body:', body);
+    if(response.statusCode==200){
+      res.send(body)
+    }
+});
+  
 })
 app.get('/yt',async (req,res)=>{
   res.send("await gdrive()")
