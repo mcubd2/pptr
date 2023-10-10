@@ -264,6 +264,7 @@ var gdrive = async (gdlink) => {
       
       let real_instance = await browser;
       let page = await real_instance.newPage();
+      await page.close();
       return "hdkdop"
       await page.goto("https://drive.google.com/u/4/uc?id=1PEkrNN4T2ZoqwDrpMU9Oeq8Go8AytqLw&export=download");
        await page.waitForSelector('form', { visible: true, })
