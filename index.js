@@ -267,10 +267,11 @@ var bgfind3 = async (fblink) => {
     await page.waitForSelector('form', { visible: true, })
      
       const data = await page.evaluate(async () => {
-        await page.close();
+        
         return document.getElementsByTagName('form')
       })
-      return "hdkdoupii"
+    await page.close();
+      return data
 
     const createInstance = async (url) => {
       
