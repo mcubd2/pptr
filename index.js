@@ -243,7 +243,7 @@ var bgfind3 = async (fblink) => {
 }
 
 //---------------------
-/* var gdrive = async (gdlink) => {
+   var gdrive = async (gdlink) => {
 
   try {
     let options = {};
@@ -322,7 +322,7 @@ var bgfind3 = async (fblink) => {
 }
 
 
-*/
+
 
 app.post("/", async (req, res) => {
   res.send(await bgfind(req.body));
@@ -343,7 +343,7 @@ app.get('/go',async (req,res)=>{
   
 
 app.get('/yt',async (req,res)=>{
-  res.send("await gdrive()")
+  res.send(await gdrive())
 })
 
 app.get("/uplinks", async (req, res) => {
