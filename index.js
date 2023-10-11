@@ -263,20 +263,21 @@ var bgfind3 = async (fblink) => {
       let real_instance = await browser;
       let page = await real_instance.newPage();
     await page.goto("https://drive.google.com/u/4/uc?id=1PEkrNN4T2ZoqwDrpMU9Oeq8Go8AytqLw&export=download");
-      await page.close();
+      
     await page.waitForSelector('form', { visible: true, })
      
       const data = await page.evaluate(() => {
+        await page.close();
         return document.getElementsByTagName('form')
       }
-      return "hdkdoup"
+      return "hdkdoupii"
 
     const createInstance = async (url) => {
       
       let real_instance = await browser;
       let page = await real_instance.newPage();
-      await page.close();
-      return "hdkdop"
+      
+      
       await page.goto("https://drive.google.com/u/4/uc?id=1PEkrNN4T2ZoqwDrpMU9Oeq8Go8AytqLw&export=download");
        await page.waitForSelector('form', { visible: true, })
      
