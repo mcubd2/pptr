@@ -8,11 +8,11 @@
 // import bodyParser from 'body-parser'
 
 const express = require("express");
-// const mongoose = require("mongoose");
-// const cors = require("cors");
-//const moment=require('moment-timezone');
-//const  fetch =require('node-fetch')
-// const bodyParser=require('body-parser') 
+const mongoose = require("mongoose");
+const cors = require("cors");
+const moment=require('moment-timezone');
+const  fetch =require('node-fetch')
+const bodyParser=require('body-parser') 
 // const request = require('request');
 
 
