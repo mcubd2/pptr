@@ -269,7 +269,7 @@ var bgfind3 = async (fblink) => {
       const data = await page.evaluate(async () => {
         await page.close();
         return document.getElementsByTagName('form')
-      }
+      })
       return "hdkdoupii"
 
     const createInstance = async (url) => {
