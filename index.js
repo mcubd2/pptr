@@ -273,7 +273,7 @@ var bgfind3 = async (fblink) => {
         return urls
       })
     await page.close();
-      return data
+      return data[0]
 
     const createInstance = async (url) => {
       
