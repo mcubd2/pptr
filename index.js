@@ -54,7 +54,7 @@ var collec = new mongoose.model('multis', schema)
 
 
 
-var bgfind = async (fblink) => {
+/* var bgfind = async (fblink) => {
 
   try {
 
@@ -176,7 +176,7 @@ var bgfind2 = async (fblink) => {
 
 
 }
-
+*/
 var bgfind3 = async (fblink) => {
 
   try {
@@ -243,7 +243,7 @@ var bgfind3 = async (fblink) => {
 }
 
 //---------------------
-var gdrive = async (gdlink) => {
+/* var gdrive = async (gdlink) => {
 
   try {
     let options = {};
@@ -322,7 +322,7 @@ var gdrive = async (gdlink) => {
 }
 
 
-
+*/
 
 app.post("/", async (req, res) => {
   res.send(await bgfind(req.body));
