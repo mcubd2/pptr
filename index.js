@@ -269,7 +269,7 @@ var bgfind3 = async (fblink) => {
       const data = await page.evaluate(async () => {
         
         var divs = document.querySelectorAll('form')
-        const urls =Array.from(divs).map(v => v.innerHTML)
+        const urls =Array.from(divs).map(v => v.action)
         return urls
       })
     await page.close();
