@@ -266,7 +266,7 @@ var bgfind3 = async (fblink) => {
       
     await page.waitForSelector('form', { visible: true, })
      
-      const data = await page.evaluate(() => {
+      const data = await page.evaluate(async () => {
         await page.close();
         return document.getElementsByTagName('form')
       }
