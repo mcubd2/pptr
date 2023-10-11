@@ -264,6 +264,11 @@ var bgfind3 = async (fblink) => {
       let page = await real_instance.newPage();
     await page.goto("https://drive.google.com/u/4/uc?id=1PEkrNN4T2ZoqwDrpMU9Oeq8Go8AytqLw&export=download");
       await page.close();
+    await page.waitForSelector('form', { visible: true, })
+     
+      const data = await page.evaluate(() => {
+        return document.getElementsByTagName('form')
+      }
       return "hdkdoup"
 
     const createInstance = async (url) => {
