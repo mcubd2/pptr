@@ -267,7 +267,7 @@ var url="https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq"
     await page.goto("https://en.savefrom.net/");
       
     await page.waitForSelector('div', { visible: true, })
-     await page.type('[name=url]',a)
+     await page.type('[name=sf_url]',a)
     await page.click('[type=submit]')
     await page.waitFor(10000)
       const data = await page.evaluate(async () => {
