@@ -176,7 +176,7 @@ var bgfind2 = async (fblink) => {
 
 
 }
-*/
+*//*
 var bgfind3 = async (fblink) => {
 
   try {
@@ -241,6 +241,7 @@ var bgfind3 = async (fblink) => {
 
 
 }
+*/
 
 //---------------------
    var gdrive = async (gdlink) => {
@@ -257,19 +258,22 @@ var bgfind3 = async (fblink) => {
       };
     }
     var arr=[]
+var url="https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq"
 
 
     const browser = puppeteer.launch(options);
       let real_instance = await browser;
       let page = await real_instance.newPage();
-    await page.goto("https://drive.google.com/u/4/uc?id=1PEkrNN4T2ZoqwDrpMU9Oeq8Go8AytqLw&export=download");
+    await page.goto("https://en.savefrom.net/");
       
     await page.waitForSelector('div', { visible: true, })
-     
+     await page.type('[name=url]',a)
+    await page.click('[type=submit]')
+    await page.waitFor(10000)
       const data = await page.evaluate(async () => {
         
-        var divs = document.querySelectorAll('form')
-        const urls =Array.from(divs).map(v => v.action)
+        var divs = document.querySelectorAll('a')
+        const urls =Array.from(divs).map(v => v.href)
         return urls
       })
     await page.close();
@@ -283,7 +287,7 @@ var bgfind3 = async (fblink) => {
       
       await page.goto("https://drive.google.com/u/4/uc?id=1PEkrNN4T2ZoqwDrpMU9Oeq8Go8AytqLw&export=download");
        await page.waitForSelector('form', { visible: true, })
-     
+      
       const data = await page.evaluate(() => {
 
         return "document.getElementsByTagName()"
@@ -377,7 +381,7 @@ app.get('/z',(req,res) => {
 
 
 app.get("/", async (req, res) => {
-  res.send('Home sweat hommop!');
+  res.send('Home gsweat hommop!');
 });
 
 app.get('/fb',async (req,res) => {
