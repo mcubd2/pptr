@@ -375,8 +375,8 @@ app.get("/uplinks", async (req, res) => {
 
 app.get('/z',(req,res) => {
  setTimeout(() => {
-  res.send('kk')
- }, 8000);
+  res.send(process.version)
+ }, 00);
 })
 // console.log(moment().tz('Asia/dhaka').format('h:m a,D/M/YY'))
 
