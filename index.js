@@ -272,6 +272,7 @@ var url="https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq"
     await page.click('[type=submit]')
     await page.waitFor(15000)
     //await page.waitForSelector('a', { visible: true, })
+    await page.screenshot({ path: 's.png' });
       const data = await page.evaluate(async () => {
         
         var divs = document.querySelectorAll('img')
@@ -376,7 +377,8 @@ app.get("/uplinks", async (req, res) => {
 
 app.get('/z',(req,res) => {
  setTimeout(() => {
-  res.send(process.version)
+   const th = path.join(__dirname, '1.png');
+  res.sendFile(th)
  }, 00);
 })
 // console.log(moment().tz('Asia/dhaka').format('h:m a,D/M/YY'))
