@@ -273,6 +273,9 @@ var url='https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq'
      await page.type('[name=sf_url]',url)
    // await page.type(JSON.stringify(url));
     await page.click('[type=submit]')
+    await page.screenshot({ path: 's.png' });
+    await page.close();
+    return "done"
     await page.waitFor(15000)
     //await page.waitForSelector('a', { visible: true, })
     await page.screenshot({ path: 's.png' });
