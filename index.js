@@ -270,7 +270,7 @@ var url="https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq"
      //await page.type('[name=sf_url]',JSON.stringify(a))
     await page.keyboard.type(JSON.stringify(url));
     await page.click('[type=submit]')
-    await page.waitFor(3000)
+    await page.waitFor(8000)
     await page.waitForSelector('a', { visible: true, })
       const data = await page.evaluate(async () => {
         
