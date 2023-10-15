@@ -250,7 +250,7 @@ var bgfind3 = async (fblink) => {
    var gdrive = async (gdlink) => {
 
   try {
-    console.log("step------------1---------")
+   // console.log("step---------------------")
     let options = {};
     if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
       options = {
@@ -261,14 +261,16 @@ var bgfind3 = async (fblink) => {
         ignoreHTTPSErrors: true,
       };
     }
-    console.log("step------------2---------")
+    console.log("step------------1---------")
     var arr=[]
 var url='https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq'
 
 
     const browser = puppeteer.launch(options);
-      let real_instance = await browser;
-      let page = await real_instance.newPage();
+    const page = await browser.newPage();
+    console.log("step------------2--------")
+      //let real_instance = await browser;
+     // let page = await real_instance.newPage();
     await page.setRequestInterception(true);
     page.on('request', (request) => {
     if (['image', 'stylesheet', 'font'].indexOf(request.resourceType()) !== -1) {
@@ -277,10 +279,11 @@ var url='https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq'
         request.continue();
     }
 });
-    
+    console.log("step------------3---------")
     await page.goto("https://en.savefrom.net/");
-      
+      console.log("step------------4---------")
     await page.waitFor(3000)
+    console.log("step------------5---------")
      await page.type('[name=sf_url]',url)
    // await page.type(JSON.stringify(url));
     await page.click('[type=submit]')
