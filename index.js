@@ -269,7 +269,7 @@ var url='https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq'
       let page = await real_instance.newPage();
     await page.goto("https://en.savefrom.net/");
       
-    await page.waitForSelector('input', { visible: true, })
+    await page.waitFor(3000)
      await page.type('[name=sf_url]',url)
    // await page.type(JSON.stringify(url));
     await page.click('[type=submit]')
