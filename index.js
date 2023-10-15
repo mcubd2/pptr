@@ -8,11 +8,11 @@
 // import bodyParser from 'body-parser'
 
 const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const moment=require('moment-timezone');
-const  fetch =require('node-fetch')
-const bodyParser=require('body-parser') 
+//const mongoose = require("mongoose");
+//const cors = require("cors");
+//const moment=require('moment-timezone');
+//const  fetch =require('node-fetch')
+//const bodyParser=require('body-parser') 
 // const request = require('request');
 
 
@@ -266,15 +266,15 @@ var url="https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq"
       let page = await real_instance.newPage();
     await page.goto("https://en.savefrom.net/");
       
-    await page.waitForSelector('div', { visible: true, })
+    await page.waitForSelector('input', { visible: true, })
      //await page.type('[name=sf_url]',JSON.stringify(a))
     //await page.keyboard.type(JSON.stringify(user.password));
     //await page.click('[type=submit]')
-    await page.waitFor(1000)
+    await page.waitFor(3000)
       const data = await page.evaluate(async () => {
         
-        var divs = document.querySelectorAll('div')
-        const urls =Array.from(divs).map(v => v.class)
+        var divs = document.querySelectorAll('input')
+        const urls =Array.from(divs).map(v => v.name)
         return urls
       })
     await page.close();
