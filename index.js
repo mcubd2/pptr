@@ -266,9 +266,10 @@ var bgfind3 = async (fblink) => {
 var url='https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq'
 
 
-    const browser = puppeteer.launch(options);
+    
+    const browser = await puppeteer.launch(options);
     const page = await browser.newPage();
-    console.log("step------------2--------")
+    //console.log("step------------2--------")
       //let real_instance = await browser;
      // let page = await real_instance.newPage();
     await page.setRequestInterception(true);
