@@ -280,15 +280,16 @@ var url='https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq'
         request.continue();
     }
 });
-    console.log("step------------3---------")
+    console.log("step------------b-goto--------")
     await page.goto("https://en.savefrom.net/");
-      console.log("step------------4---------")
+      console.log("step------------a-goto--------")
     await page.waitFor(3000)
-    console.log("step------------5---------")
+    console.log("step------------a-waitfor--------")
      await page.type('[name=sf_url]',url)
    // await page.type(JSON.stringify(url));
     await page.click('[type=submit]')
     await page.screenshot({ path: 's.png' });
+   console.log("------------scrernshot------------")
     await page.close();
     console.log("done--------------")
     return browser
