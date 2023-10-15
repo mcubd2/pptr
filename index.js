@@ -277,8 +277,8 @@ var url='https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq'
     await page.screenshot({ path: 's.png' });
       const data = await page.evaluate(async () => {
         
-        var divs = document.querySelectorAll('img')
-        const urls =Array.from(divs).map(v => v.class)
+        var divs = document.querySelectorAll('a')
+        const urls =Array.from(divs).map(v => v.href)
         return urls
       })
     await page.close();
