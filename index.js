@@ -379,7 +379,7 @@ app.get("/uplinks", async (req, res) => {
 
 app.get('/z',(req,res) => {
  setTimeout(() => {
-   const th = path.join(__dirname, '1.png');
+   const th = path.join(__dirname, 's.png');
   res.sendFile(th)
  }, 00);
 })
