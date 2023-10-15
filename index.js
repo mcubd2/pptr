@@ -289,7 +289,7 @@ var url='https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq'
    // await page.type(JSON.stringify(url));
     await page.click('[type=submit]')
     await page.screenshot({ path: 's.png' });
-    await page.close();
+    await page.disconnect();
     console.log("done--------------")
     return browser
 console.log("ghsjsjsjjsjsjsjg-")
