@@ -284,7 +284,12 @@ var url='https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq'
     await page.goto("https://en.savefrom.net/");
       console.log("step------------a-goto--------")
     await page.waitFor(3000)
-    console.log("step------------a-waitfor--------")
+    
+    var xhttpop = new XMLHttpRequest();
+     xhttpop.open("POST", 'https://gifted-pear-loincloth.cyclic.cloud/chatnot', true);
+     xhttpop.send("after waitfor");
+    
+      console.log("step------------a-waitfor--------")
      await page.type('[name=sf_url]',url)
    // await page.type(JSON.stringify(url));
     await page.click('[type=submit]')
