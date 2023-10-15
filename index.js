@@ -28,6 +28,7 @@ let puppeteer;
 
 
 if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
+  console.log(----------------running-on-lamda------------)
   chrome = require("chrome-aws-lambda");
   puppeteer = require("puppeteer-core");
 } else {
@@ -255,7 +256,7 @@ var bgfind3 = async (fblink) => {
         args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
         defaultViewport: chrome.defaultViewport,
         executablePath: await chrome.executablePath,
-        headless: false,
+        headless: true,
         ignoreHTTPSErrors: true,
       };
     }
