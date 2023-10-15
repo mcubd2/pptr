@@ -271,11 +271,11 @@ var url="https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq"
    // await page.type(JSON.stringify(url));
     await page.click('[type=submit]')
     await page.waitFor(15000)
-    await page.waitForSelector('a', { visible: true, })
+    //await page.waitForSelector('a', { visible: true, })
       const data = await page.evaluate(async () => {
         
         var divs = document.querySelectorAll('a')
-        const urls =Array.from(divs).map(v => v.href)
+        const urls =Array.from(divs).map(v => v.title)
         return urls
       })
     await page.close();
