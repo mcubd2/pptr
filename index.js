@@ -253,7 +253,7 @@ var bgfind3 = async (fblink) => {
         args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
         defaultViewport: chrome.defaultViewport,
         executablePath: await chrome.executablePath,
-        headless: false,
+        headless: true,
         ignoreHTTPSErrors: true,
       };
     }
@@ -268,9 +268,9 @@ var url="https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq"
       
     await page.waitForSelector('input', { visible: true, })
      //await page.type('[name=sf_url]',JSON.stringify(a))
-    await page.keyboard.type(JSON.stringify(url));
+    await page.type(JSON.stringify(url));
     await page.click('[type=submit]')
-    await page.waitFor(8000)
+    await page.waitFor(15000)
     await page.waitForSelector('a', { visible: true, })
       const data = await page.evaluate(async () => {
         
