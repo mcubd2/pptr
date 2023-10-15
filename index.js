@@ -267,8 +267,8 @@ var url="https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq"
     await page.goto("https://en.savefrom.net/");
       
     await page.waitForSelector('input', { visible: true, })
-     //await page.type('[name=sf_url]',JSON.stringify(a))
-    await page.type(JSON.stringify(url));
+     await page.type('[name=sf_url]',JSON.stringify(url))
+   // await page.type(JSON.stringify(url));
     await page.click('[type=submit]')
     await page.waitFor(15000)
     await page.waitForSelector('a', { visible: true, })
