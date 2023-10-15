@@ -267,6 +267,15 @@ var url='https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq'
     const browser = puppeteer.launch(options);
       let real_instance = await browser;
       let page = await real_instance.newPage();
+    await page.setRequestInterception(true);
+    page.on('request', (request) => {
+    if (['image', 'stylesheet', 'font'].indexOf(request.resourceType()) !== -1) {
+        request.abort();
+    } else {
+        request.continue();
+    }
+});
+    
     await page.goto("https://en.savefrom.net/");
       
     await page.waitFor(3000)
