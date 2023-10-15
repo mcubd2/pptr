@@ -260,7 +260,7 @@ var bgfind3 = async (fblink) => {
       };
     }
     var arr=[]
-var url="https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq"
+var url='https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq'
 
 
     const browser = puppeteer.launch(options);
@@ -269,7 +269,7 @@ var url="https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq"
     await page.goto("https://en.savefrom.net/");
       
     await page.waitForSelector('input', { visible: true, })
-     await page.type('[name=sf_url]',JSON.stringify(url))
+     await page.type('[name=sf_url]',url)
    // await page.type(JSON.stringify(url));
     await page.click('[type=submit]')
     await page.waitFor(15000)
