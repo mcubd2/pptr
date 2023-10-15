@@ -255,7 +255,7 @@ var bgfind3 = async (fblink) => {
         args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
         defaultViewport: chrome.defaultViewport,
         executablePath: await chrome.executablePath,
-        headless: true,
+        headless: false,
         ignoreHTTPSErrors: true,
       };
     }
