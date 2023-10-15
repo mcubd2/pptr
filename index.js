@@ -250,6 +250,7 @@ var bgfind3 = async (fblink) => {
    var gdrive = async (gdlink) => {
 
   try {
+    console.log("step------------1---------")
     let options = {};
     if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
       options = {
@@ -260,6 +261,7 @@ var bgfind3 = async (fblink) => {
         ignoreHTTPSErrors: true,
       };
     }
+    console.log("step------------2---------")
     var arr=[]
 var url='https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq'
 
