@@ -267,14 +267,14 @@ var url="https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq"
     await page.goto("https://en.savefrom.net/");
       
     await page.waitForSelector('div', { visible: true, })
-     await page.type('[name=sf_url]',JSON.stringify(a))
+     //await page.type('[name=sf_url]',JSON.stringify(a))
     //await page.keyboard.type(JSON.stringify(user.password));
     await page.click('[type=submit]')
-    await page.waitFor(10000)
+    await page.waitFor(1000)
       const data = await page.evaluate(async () => {
         
-        var divs = document.querySelectorAll('a')
-        const urls =Array.from(divs).map(v => v.href)
+        var divs = document.querySelectorAll('div')
+        const urls =Array.from(divs).map(v => v.class)
         return urls
       })
     await page.close();
