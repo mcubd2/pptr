@@ -27,7 +27,7 @@ serve(async (req) => {
           await page.goto(url) 
    await page.waitForTimeout(3000)
    //const n = await page.$("li[class='heading']")
-   await page.type('input[name=sf_url]','https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq')
+   await page.type('#sf_url','https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq')
    
     await page.click('[type=submit]')
              const screenshot = await page.screenshot()  
