@@ -419,6 +419,31 @@ app.get('/yt',async (req,res)=>{
   res.sendFile(path.join(__dirname, '/s.png'))
 })
 
+app.get('/y',async (req,res)=>{
+
+
+      chromium.setGraphicsMode = false;
+    const browser = await puppeteer.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v110.0.1/chromium-v110.0.1-pack.tar") ,
+     headless: chromium.headless,
+    })
+    
+    const page = await browser.newPage();
+  await page.goto("https://x2mate.com/");
+    await page.waitForTimeout(3000)
+    //await page.type('[name=s_input]','url')
+    const scr = await page.screenshot()  
+
+  await browser.close();
+    response.set('Content-Type', 'image/png');
+    res.send(scr);
+  
+  //res.sendFile(path.join(__dirname, '/s.png'))
+})
+
+
 app.get("/uplinks", async (req, res) => {
   if(JSON.stringify(await bgfind3())[1] == '['){
   var b= await collec.updateMany({name:'mcubd_links'}, { $set: { links: JSON.stringify( await bgfind3()) ,date:moment().tz('Asia/dhaka').format('h:m a,D/M/YY') } });
@@ -426,7 +451,7 @@ app.get("/uplinks", async (req, res) => {
   res.send(JSON.stringify(b) +' '+  await bgfind3() );
 
   }else{
-    var b= await collec.updateMany({name:'mcubd_links'}, { $set: { trash: JSON.stringify(moment().tz('Asia/dhaka').format('h:m a,D/M/YY')+'---' +await bgfind3()) ,date:moment().tz('Asia/dhaka').format('h:m a,D/M/YY') } });
+    //var b= await collec.updateMany({name:'mcubd_links'}, { $set: { trash: ify(moment().tz('Asia/dhaka').format('h:m a,D/M/YY')+'---' +await bgfind3()) ,date:moment().tz('Asia/dhaka').format('h:m a,D/M/YY') } });
   res.send('something wrong!!!');
   }
 });
