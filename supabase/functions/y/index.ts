@@ -3,8 +3,8 @@
 // This enables autocomplete, go to definition
 // To invoke: 
 import { serve }from "https://deno.land/std@0.204.0/http/server.ts";
-//import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts"
-import * as puppeteer from "https://deno.land/x/puppeteer_plus/mod.ts";
+import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts"
+//import * as puppeteer from "https://deno.land/x/puppeteer_plus/mod.ts";
 //import * as pptr from "https://deno.land/x/pptr@1.2.0/mod.ts";
  
 
@@ -46,8 +46,9 @@ serve(async (req) => {
 const browser = await puppeteer.launch();
 const page = await browser.newPage();
 await page.goto("https://example.com");
-//await page.screenshot({ path: "example.png" });
+// page.screenshot({ path: "example.png" });
 
+await browser.close();
 
 
 
