@@ -274,7 +274,7 @@ chromium.setHeadlessMode = true;
 return p
 
     }catch(err){
-      return err
+      return new Response(JSON.stringify({ error: e.message }), { headers: { 'Content-Type': 'application/json' }, status: 500, }) }
     }
 
     
