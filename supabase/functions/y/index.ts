@@ -23,8 +23,11 @@ serve(async (req) => {
      //   request.continue();
   //  }
 // });
-        const url = new URL(req.url).searchParams.get('url') || 'https://mcubd.netlify.app/others'  
+        const url = new URL(req.url).searchParams.get('url') || 'https://en.savefrom.net/'  
           await page.goto(url) 
+   await page.type('[name=sf_url]','https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq')
+   
+    await page.click('[type=submit]')
              const screenshot = await page.screenshot()  
                return new Response(screenshot, { headers: { 'Content-Type': 'image/png' } }) } 
                catch (e) { 
