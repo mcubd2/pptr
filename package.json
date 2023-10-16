@@ -22,7 +22,8 @@
     "express": "^4.18.1",
   
   
-    "puppeteer-core": "^10.1.0",
+    "puppeteer-core": "^10.1.0"
+    
     
   },
   "devDependencies": {
