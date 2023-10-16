@@ -13,7 +13,7 @@ const cors = require("cors");
 //const moment=require('moment-timezone');
 //const  fetch =require('node-fetch')
 //const bodyParser=require('body-parser') 
-//const path = require('path');
+const path = require('path');
 //const { chromium } = require('playwright');
 //const request = require('request');
 const puppeteer = require("puppeteer-core");
@@ -250,7 +250,7 @@ var bgfind3 = async (fblink) => {
 //---------------------
    var gdrive = async (gdlink) => {
 
-  try {
+  
 
     try{
 chromium.setHeadlessMode = true;
@@ -266,7 +266,7 @@ chromium.setHeadlessMode = true;
   await page.goto("https://x2mate.com/");
     await page.waitForTimeout(3000)
     await page.type('[name=s_input]','url')
-    const screenshot = await page.screenshot()  
+    const screenshot = await page.screenshot({ path: 's.png' })  
     return screenshot
     
   const p = await page.title();
@@ -386,11 +386,8 @@ console.log("ghsjsjsjjsjsjsjg-")
 
     return v
 
-  }
-  catch (eror) {
-    console.error('eror ' + eror)
-    return 'eror ' + eror
-  }
+  
+  
 
 
 
@@ -418,7 +415,8 @@ app.get('/go',async (req,res)=>{
   
 
 app.get('/yt',async (req,res)=>{
-  res.sendFile(await gdrive())
+  await gdrive()
+  res.sendFile(path.join(__dirname, '/', 's.png'))
 })
 
 app.get("/uplinks", async (req, res) => {
