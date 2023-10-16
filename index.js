@@ -8,15 +8,15 @@
 // import bodyParser from 'body-parser'
   
 const express = require("express");
-const mongoose = require("mongoose");
+//const mongoose = require("mongoose");
 const cors = require("cors");
-const moment=require('moment-timezone');
-const  fetch =require('node-fetch')
-const bodyParser=require('body-parser') 
-const path = require('path');
+//const moment=require('moment-timezone');
+//const  fetch =require('node-fetch')
+//const bodyParser=require('body-parser') 
+//const path = require('path');
 //const { chromium } = require('playwright');
 //const request = require('request');
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-core");
 //const chromium = require("@sparticuz/chromium");
 const chromium = require('chromium');
 
@@ -48,12 +48,12 @@ app.use(cors({
 }));
 // app.set('trust proxy', true)
 // app.use(express.json())
-app.use(bodyParser.text({ type: "*/*" }));
+//app.use(bodyParser.text({ type: "*/*" }));
 
-var DB = 'mongodb+srv://zayn:1221@cluster0.fzxdoyt.mongodb.net/db1?retryWrites=true&w=majority'; mongoose.connect(DB)
-  .then(() => { console.log('con suc') }).catch((err) => { console.log(err) })
-var schema =new mongoose.Schema({ data: String, ram: String, device: String, platform: String, date: String, ip: String, num: String, media: String,fname:String,links:String,name:String,trash:String })
-var collec = new mongoose.model('multis', schema)
+//var DB = 'mongodb+srv://zayn:1221@cluster0.fzxdoyt.mongodb.net/db1?retryWrites=true&w=majority'; mongoose.connect(DB)
+//  .then(() => { console.log('con suc') }).catch((err) => { console.log(err) })
+//var schema =new mongoose.Schema({ data: String, ram: String, device: String, platform: String, date: String, ip: String, num: String, media: String,fname:String,links:String,name:String,trash:String })
+//var collec = new mongoose.model('multis', schema)
 
 
 
