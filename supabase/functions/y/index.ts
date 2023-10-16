@@ -26,7 +26,8 @@ serve(async (req) => {
         const url = new URL(req.url).searchParams.get('url') || 'https://en.savefrom.net/'  
           await page.goto(url) 
    await page.waitForTimeout(3000)
-   await page.type('[name=sf_url]','https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq')
+   //const n = await page.$("li[class='heading']")
+   await page.type('input[name=sf_url]','https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq')
    
     await page.click('[type=submit]')
              const screenshot = await page.screenshot()  
