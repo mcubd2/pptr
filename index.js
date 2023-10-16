@@ -17,8 +17,8 @@ const path = require('path');
 //const { chromium } = require('playwright');
 //const request = require('request');
 const puppeteer = require("puppeteer");
-const chromium = require("@sparticuz/chromium");
-
+//const chromium = require("@sparticuz/chromium");
+const chromium = require('chromium');
 
 
 
@@ -255,10 +255,11 @@ var bgfind3 = async (fblink) => {
 chromium.setHeadlessMode = true;
     chromium.setGraphicsMode = false;
     const browser = await puppeteer.launch({
-    args: chromium.args,
-    defaultViewport: chromium.defaultViewport,
-   // executablePath: await chromium.executablePath() ,
-      headless: chromium.headless,})
+   //  args: chromium.args,
+    // defaultViewport: chromium.defaultViewport,
+    executablePath: './node_modules/chromium/lib/chromium/chrome-linux/chrome' ,
+  //    headless: chromium.headless,
+    })
     
     const page = await browser.newPage();
   await page.goto("https://www.google.com");
