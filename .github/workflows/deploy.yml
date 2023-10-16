@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SUPABASE_ACCESS_TOKEN: ${secrets.TOKEN}
+      SUPABASE_ACCESS_TOKEN: ${{secrets.TOKEN}}
       PROJECT_ID: ${secrets.PROJECT}
 
     steps:
@@ -21,4 +21,4 @@ jobs:
         with:
           version: latest
 
-      - run: supabase functions deploy --project-ref $PROJECT_ID
+      - run: supabase functions deploy y --project-ref $PROJECT_ID
