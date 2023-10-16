@@ -17,8 +17,8 @@ const cors = require("cors");
 //const { chromium } = require('playwright');
 //const request = require('request');
 const puppeteer = require("puppeteer-core");
-//const chromium = require("@sparticuz/chromium");
-const chromium = require('chromium');
+const chromium = require("@sparticuz/chromium");
+//const chromium = require('chromium');
 
 
 
@@ -257,7 +257,7 @@ chromium.setHeadlessMode = true;
     const browser = await puppeteer.launch({
    //  args: chromium.args,
     // defaultViewport: chromium.defaultViewport,
-    executablePath: './node_modules/chromium/lib/chromium/chrome-linux/chrome' ,
+    executablePath: await chromium.executablePath ,
   //    headless: chromium.headless,
     })
     
