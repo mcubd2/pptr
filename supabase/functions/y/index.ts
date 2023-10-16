@@ -51,9 +51,9 @@ serve(async (req) => {
 //   await page.waitForTimeout(3000)
       //  import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts";
 
-const browser = await puppeteer.launch();
-const page = await browser.newPage();
-await page.goto("https://example.com");
+//-------const browser = await puppeteer.launch();
+//-------const page = await browser.newPage();
+//--------await page.goto("https://example.com");
 //await page.screenshot({ path: "example.png" });
 
 
@@ -78,9 +78,9 @@ await page.goto("https://example.com");
    
 //    await page.click('[type=submit]')
 //   await page.waitForTimeout(3000)
-           const screenshot = await page.screenshot()  
-            await browser.close();
-   return new Response(screenshot, { headers: { 'Content-Type': 'image/png' } }) } 
+          //----- const screenshot = await page.screenshot()  
+           //------ await browser.close();
+   return new Response("screenshot", { headers: { 'Content-Type': 'image/png' } }) } 
                catch (e) { 
                 console.error(e)  
                   return new Response(JSON.stringify({ error: e.message }), { headers: { 'Content-Type': 'application/json' }, status: 500, }) }
