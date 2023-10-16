@@ -25,7 +25,7 @@ serve(async (req) => {
 // });
         const url = new URL(req.url).searchParams.get('url') || 'https://en.savefrom.net/'  
           await page.goto(url) 
-   await page.waitForTimeout(3000)
+   await page.waitForSelector('input')
    //const n = await page.$("li[class='heading']")
    await page.type('#sf_url','https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq')
    
