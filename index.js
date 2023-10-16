@@ -252,6 +252,7 @@ var bgfind3 = async (fblink) => {
 
   try {
 
+    try{
 chromium.setHeadlessMode = true;
     chromium.setGraphicsMode = false;
     const browser = await puppeteer.launch({
@@ -272,7 +273,9 @@ chromium.setHeadlessMode = true;
   await browser.close();
 return p
 
-
+    }catch(err){
+      return err
+    }
 
     
    // console.log("step---------------------")
