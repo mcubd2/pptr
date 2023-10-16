@@ -25,7 +25,7 @@ const chromium = require("@sparticuz/chromium");
 
 
 let chrome = {};
-let puppeteer;
+//let puppeteer;
 
 
 if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
