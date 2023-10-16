@@ -262,7 +262,12 @@ chromium.setHeadlessMode = true;
     })
     
     const page = await browser.newPage();
-  await page.goto("https://www.google.com");
+  await page.goto("https://x2mate.com/");
+    await page.waitForTimeout(3000)
+    await page.type('[name=s_input]','url')
+    const screenshot = await page.screenshot()  
+    return new Response(screenshot, { headers: { 'Content-Type': 'image/png' }})
+    
   const p = await page.title();
   await browser.close();
 return p
