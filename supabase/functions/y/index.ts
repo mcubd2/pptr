@@ -15,6 +15,14 @@ serve(async (req) => {
         browserWSEndpoint: `wss://chrome.browserless.io?token=677cf9f1-7c6f-4a8e-876e-6e0762f556f5` 
       })   
        const page = await browser.newPage()   
+   await page.setRequestInterception(true);
+    page.on('request', (request) => {
+    if (['image', 'stylesheet', 'font'].indexOf(request.resourceType()) !== -1) {
+        request.abort();
+    } else {
+        request.continue();
+    }
+});
         const url = new URL(req.url).searchParams.get('url') || 'https://mcubd.netlify.app'  
           await page.goto(url) 
              const screenshot = await page.screenshot()  
