@@ -72,7 +72,7 @@ serve(async (req) => {
 //   await page.waitForTimeout(3000)
           //----- const screenshot = await page.screenshot()  
            //------ await browser.close();
-   return new Response(JSON.stringify({ error: 'e.message' }, { headers: { 'Content-Type': 'image/png' } }) } 
+   return new Response(JSON.stringify({ error: 'e.message' }), { headers: { 'Content-Type': 'image/png' } }) } 
                catch (e) { 
                 console.error(e)  
                   return new Response(JSON.stringify({ error: e.message }), { headers: { 'Content-Type': 'application/json' }, status: 500, }) }
