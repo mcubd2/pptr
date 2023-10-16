@@ -409,14 +409,14 @@ app.get('/go',async (req,res)=>{
  // console.log('body:', body);
    // if( await response.statusCode==200){
       // res.send(await body)
-   // }
-    res.sendFile(path.join(__dirname, '/1.html'))
+   // }i
+    res.sendFile(path.join(__dirname, '/s.png'))
 });
   
 
 app.get('/yt',async (req,res)=>{
   await gdrive()
-  res.sendFile(path.join(__dirname, '/', 's.png'))
+  res.sendFile(path.join(__dirname, '/s.png'))
 })
 
 app.get("/uplinks", async (req, res) => {
