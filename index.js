@@ -255,10 +255,10 @@ var bgfind3 = async (fblink) => {
 chromium.setHeadlessMode = true;
     chromium.setGraphicsMode = false;
     const browser = await puppeteer.launch({
-   //  args: chromium.args,
-    // defaultViewport: chromium.defaultViewport,
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
     executablePath: await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v110.0.1/chromium-v110.0.1-pack.tar") ,
-  //    headless: chromium.headless,
+     headless: chromium.headless,
     })
     
     const page = await browser.newPage();
