@@ -405,7 +405,7 @@ app.get('/go',async (req,res)=>{
    // if( await response.statusCode==200){
       // res.send(await body)
    // }
-    res.send("--90")
+    res.send(process.version)
 });
   
 
