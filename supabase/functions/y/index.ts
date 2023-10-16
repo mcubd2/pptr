@@ -26,7 +26,7 @@ serve(async (req) => {
      //   request.continue();
   //  }
 // });
-       const url = new URL(req.url).searchParams.get('url') || 'https://www.videovor.com/'  
+       const url = new URL(req.url).searchParams.get('url') || 'https://www.google.com'  
         await page.goto(url) 
  // await page.waitForSelector('input')
   // const n = await page.$("li[class='heading']")
