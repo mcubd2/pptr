@@ -16,7 +16,7 @@ const bodyParser=require('body-parser')
 const path = require('path');
 //const { chromium } = require('playwright');
 //const request = require('request');
-const puppeteer = require("puppeteer-core");
+const puppeteer = require("puppeteer");
 const chromium = require("@sparticuz/chromium");
 
 
