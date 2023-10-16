@@ -15,7 +15,7 @@ serve(async (req) => {
       //  browserWSEndpoint: `wss://chrome.browserless.io?token=677cf9f1-7c6f-4a8e-876e-6e0762f556f5` 
       //})   
 
-   const browser = await puppeteer.launch({
+   const browser = await pptr.launch({
   executablePath: '/usr/bin/google-chrome',
 });
 
