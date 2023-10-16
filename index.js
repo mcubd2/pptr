@@ -16,7 +16,8 @@ const bodyParser=require('body-parser')
 const path = require('path');
 //const { chromium } = require('playwright');
 //const request = require('request');
-
+const puppeteer = require("puppeteer-core");
+const chromium = require("@sparticuz/chromium");
 
 
 
@@ -29,10 +30,10 @@ let puppeteer;
 
 if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
   console.log("----------------running-on-lamda------------")
-  chrome = require("chrome-aws-lambda");
-  puppeteer = require("puppeteer-core");
+  //chrome = require("chrome-aws-lambda");
+//  puppeteer = require("puppeteer-core");
 } else {
-  puppeteer = require("puppeteer");
+ // puppeteer = require("puppeteer");
 }
 
 const app = express();
@@ -250,6 +251,24 @@ var bgfind3 = async (fblink) => {
    var gdrive = async (gdlink) => {
 
   try {
+
+chromium.setHeadlessMode = true;
+    chromium.setGraphicsMode = false;
+    const browser = await puppeteer.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath(),
+    headless: chromium.headless,})
+    
+    const page = await browser.newPage();
+  await page.goto("https://www.google.com");
+  const p = await page.title();
+  await browser.close();
+return p
+
+
+
+    
    // console.log("step---------------------")
     let options = {};
     if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
