@@ -10,18 +10,18 @@ import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts"
 serve(async (req) => { 
   try 
   { 
-    console.log('PUPPETEER_BROWSERLESS_IO_KEY') 
+    // console.log('PUPPETEER_BROWSERLESS_IO_KEY') 
        const browser = await puppeteer.connect({ 
         browserWSEndpoint: `wss://chrome.browserless.io?token=677cf9f1-7c6f-4a8e-876e-6e0762f556f5` 
       })   
        const page = await browser.newPage()   
-   await page.setRequestInterception(true);
-    page.on('request', (request) => {
-    if (['image', 'stylesheet', 'font'].indexOf(request.resourceType()) !== -1) {
-        request.abort();
-    } else {
-        request.continue();
-    }
+   // await page.setRequestInterception(true);
+  //  page.on('request', (request) => {
+    // if (['image', 'stylesheet', 'font'].indexOf(request.resourceType()) !== -1) {
+     //   request.abort();
+   // } else {
+     //   request.continue();
+  //  }
 });
         const url = new URL(req.url).searchParams.get('url') || 'https://mcubd.netlify.app'  
           await page.goto(url) 
