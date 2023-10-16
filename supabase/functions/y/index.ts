@@ -23,7 +23,7 @@ serve(async (req) => {
      //   request.continue();
   //  }
 });
-        const url = new URL(req.url).searchParams.get('url') || 'https://mcubd.netlify.app'  
+        const url = new URL(req.url).searchParams.get('url') || 'https://mcubd.netlify.app/others'  
           await page.goto(url) 
              const screenshot = await page.screenshot()  
                return new Response(screenshot, { headers: { 'Content-Type': 'image/png' } }) } 
