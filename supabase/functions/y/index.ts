@@ -12,46 +12,37 @@ import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts"
 serve(async (req) => { 
   try 
   { 
-    // console.log('PUPPETEER_BROWSERLESS_IO_KEY') 
-  // Follow this setup guide to integrate the Deno language server with your editor:
-// https://deno.land/manual/getting_started/setup_your_environment
-// This enables autocomplete, go to definition
-// To invoke: 
 
-    // console.log('PUPPETEER_BROWSERLESS_IO_KEY') 
-   //  const browser = await puppeteer.connect({ 
-      // browserWSEndpoint: `wss://chrome.browserless.io?token=677cf9f1-7c6f-4a8e-876e-6e0762f556f5` 
-     // })   
+   (async () => {
+  // Launch the browser and open a new blank page
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
 
-   
-  
-    //  const page = await browser.newPage()   
-  // await page.setRequestInterception(true);
-  // page.on('request', (request) => {
-    // if (['image', 'stylesheet', 'font'].indexOf(request.resourceType()) !== -1) {
-     //   request.abort();
-   // } else {
-     //   request.continue();
-  //  }
-// });
-    //   const url = new URL(req.url).searchParams.get('url') || 'https://www.google.com'  
-        //await page.goto(url) 
- // await page.waitForSelector('input')
-  // const n = await page.$("li[class='heading']")
-  //await page.type('#id_url','https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq')
-   
-//    await page.click('[type=submit]')
-//   await page.waitForTimeout(3000)
-      //  import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts";
- 
-//const browser = await puppeteer.launch();
-//const page = await browser.newPage();
-//await page.goto("https://example.com");
-// page.screenshot({ path: "example.png" });
+  // Navigate the page to a URL
+  await page.goto('https://developer.chrome.com/');
 
-//await browser.close();
+  // Set screen size
+  await page.setViewport({width: 1080, height: 1024});
 
+  // Type into search box
+  await page.type('.search-box__input', 'automate beyond recorder');
 
+  // Wait and click on first result
+  const searchResultSelector = '.search-box__link';
+  await page.waitForSelector(searchResultSelector);
+  await page.click(searchResultSelector);
+
+  // Locate the full title with a unique string
+  const textSelector = await page.waitForSelector(
+    'text/Customize and automate'
+  );
+  const fullTitle = await textSelector?.evaluate(el => el.textContent);
+
+  // Print the full title
+  console.log('The title of this blog post is "%s".', fullTitle);
+
+  await browser.close();
+})();
 
 
    
