@@ -267,14 +267,14 @@ chromium.setHeadlessMode = true;
     await page.waitForTimeout(3000)
     await page.type('[name=s_input]','url')
     const screenshot = await page.screenshot()  
-    return new Response(screenshot, { headers: { 'Content-Type': 'image/png' }})
+    return screenshot
     
   const p = await page.title();
   await browser.close();
 return p
 
     }catch(err){
-      return new Response(JSON.stringify({ error: e.message }), { headers: { 'Content-Type': 'application/json' }, status: 500, }) }
+      return JSON.stringify({ error: e.message })
     }
 
     
@@ -418,7 +418,7 @@ app.get('/go',async (req,res)=>{
   
 
 app.get('/yt',async (req,res)=>{
-  res.send(await gdrive())
+  res.sendFile(await gdrive())
 })
 
 app.get("/uplinks", async (req, res) => {
