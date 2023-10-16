@@ -13,9 +13,8 @@
   "license": "ISC",
  
   "dependencies": {
-    
-  
-    "chromium":"^3.0.3",
+      "@sparticuz/chromium":"^92.0.0",
+     "chrome-aws-lambda": "^10.1.0",
    
   
     "cors": "^2.8.5",
