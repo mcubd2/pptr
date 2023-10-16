@@ -274,7 +274,7 @@ chromium.setHeadlessMode = true;
 return p
 
     }catch(err){
-      return JSON.stringify({ error: e.message })
+      return JSON.stringify({ error: err.message })
     }
 
     
