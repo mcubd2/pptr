@@ -17,7 +17,7 @@ const cors = require("cors");
 //const { chromium } = require('playwright');
 //const request = require('request');
 const puppeteer = require("puppeteer-core");
-const chromium = require("@sparticuz/chromium");
+const chromium = require("@sparticuz/chromium-min");
 //const chromium = require('chromium');
 
 
