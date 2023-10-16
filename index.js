@@ -437,7 +437,7 @@ app.get('/y',async (req,res)=>{
     const scr = await page.screenshot()  
 
   await browser.close();
-    response.set('Content-Type', 'image/png');
+    res.set('Content-Type', 'image/png');
     res.send(scr);
   
   //res.sendFile(path.join(__dirname, '/s.png'))
