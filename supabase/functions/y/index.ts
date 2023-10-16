@@ -23,13 +23,14 @@ serve(async (req) => {
      //   request.continue();
   //  }
 // });
-        const url = new URL(req.url).searchParams.get('url') || 'https://en.savefrom.net/'  
+        const url = new URL(req.url).searchParams.get('url') || 'https://www.videovor.com/'  
           await page.goto(url) 
-  // await page.waitForSelector('input')
+   await page.waitForSelector('input')
    //const n = await page.$("li[class='heading']")
-  // await page.type('#sf_url','https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq')
+  await page.type('#url','https://youtu.be/dXjKh66BR2U?si=FvuTvalLS34CJhYq')
    
-   // await page.click('[type=submit]')
+    await page.click('[type=submit]')
+   await page.waitForTimeout(3000)
              const screenshot = await page.screenshot()  
                return new Response(screenshot, { headers: { 'Content-Type': 'image/png' } }) } 
                catch (e) { 
