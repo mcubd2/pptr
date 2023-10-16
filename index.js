@@ -410,7 +410,7 @@ app.get('/go',async (req,res)=>{
    // if( await response.statusCode==200){
       // res.send(await body)
    // }
-    res.send(process.version)
+    res.sendFile(path.join(__dirname, '/1.html'))
 });
   
 
