@@ -270,7 +270,7 @@ return p
 
     
    // console.log("step---------------------")
-    let options = {};
+   /* let options = {};
     if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
       options = {
         args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
@@ -360,7 +360,7 @@ console.log("ghsjsjsjjsjsjsjg-")
 
    return  createInstance();
     
-
+*/
     // add tasks to queue
     var urls=['j','k','m']
     for (let i of urls) {
