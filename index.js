@@ -450,7 +450,7 @@ app.get('/yt', async (req, res) => {
   await gdrive()
   res.sendFile(path.join(__dirname, '/s.png'))
 })
-app.get('/web1',async (req,res){
+app.get('/web1',async (req,res)=> {
 
   res.send(await web1(req.query.url))
 })
