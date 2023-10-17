@@ -44,6 +44,10 @@ var stringg = (await db.get(db.child(dbRef, `Name`))).val()
 return string
 }
 
+//const dbref = db.ref(D.getDatabase());
+
+
+db.update(db.ref(database,"multi/webapp"), { data  :" com " });
 let chrome = {};
 //let puppeteer;
 
