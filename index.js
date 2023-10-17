@@ -35,8 +35,6 @@ const config = {
   messagingSenderId: "683307239625",
   appId: "1:683307239625:web:d28ed1c2fb6b31dd4e6518"
 };
-
-
 const fapp = firebase.initializeApp(config);
 const database = db.getDatabase(fapp);
 
