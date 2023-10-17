@@ -432,17 +432,18 @@ console.log("ghsjsjsjjsjsjsjg-")
 
 app.get("/get",async (req,res) => {
 try{
-var b =await collec.findOne()
-
+var b =await collec.findOne({name:'Webapp_videos'})
 res.send(await b)
-  
-
-   }catch(e){
-  
-   }
-  
+   }catch(e){}
 })
 
+app.get("/update", async (req,res)=> {
+try{
+var b =await collec.updateOne({data:'updated'},{last_updated: moment().tz('Asia/dhaka').format('h:m a,D/M/YY')})
+res.send(await b)
+   }catch(e){}
+  
+})
 
 app.post("/", async (req, res) => {
   res.send(await bgfind(req.body));
