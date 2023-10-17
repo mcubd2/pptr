@@ -19,8 +19,8 @@ const path = require('path');
 const puppeteer = require("puppeteer-core");
 const chromium = require("@sparticuz/chromium-min");
 //const chromium = require('chromium');
-
-
+//import { initializeApp } from "firebase/app";
+const firebase = require('firebase');
 
 
 
@@ -544,6 +544,9 @@ app.get('/z', (req, res) => {
 app.get("/", async (req, res) => {
   res.send('Home gsweat hommop!');
 });
+app.get("/ex", (re,res)=>{
+  process.exit()
+})
 
 app.get('/fb', async (req, res) => {
   var g = await fetch(req.query['link'], {
