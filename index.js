@@ -57,7 +57,7 @@ app.use(cors({
 
 var DB = 'mongodb+srv://zayn:1221@cluster0.fzxdoyt.mongodb.net/db1?retryWrites=true&w=majority'; mongoose.connect(DB)
 .then(() => { console.log('connected to the db') }).catch((err) => { console.log(err) })
-  var multis_schema = new mongoose.Schema({ name: String,  data: String ,last_updated:Date })
+  var multis_schema = new mongoose.Schema({ name: String,  data: String ,last_updated:String })
   var collec = new mongoose.model('multis', multis_schema) 
 
 
