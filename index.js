@@ -441,7 +441,9 @@ app.get("/update", async (req,res)=> {
 try{
 var b =await collec.updateOne({data:'updated'},{last_updated: moment().tz('Asia/dhaka').format('h:m a,D/M/YY')})
 res.send(await b)
-   }catch(e){}
+   }catch(e){
+  res.send(e)
+   }
   
 })
 
