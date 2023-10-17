@@ -120,7 +120,34 @@ var web1 = async (url) => {
   return data
 }
 
+var web2 =async function (url){
+  const browser = await puppeteer.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v110.0.1/chromium-v110.0.1-pack.tar"),
+    headless: false
+  })
 
+  var ahp = "https://www.ssemble.com/en140yn/youtube-downloader/"
+  var ap = "https://save.tube/"
+  var aa = url || "https://youtu.be/QQkmJI63ykI?si=1aOYl9yLULJzSZYh"
+  const page = await browser.newPage();
+  await page.goto(ap)
+  await page.waitForTimeout(3000)
+  await page.screenshot({ path: 'step--11.png' })
+  await page.type('input[id=video]', aa)
+  await page.click('input[type=submit]')
+  await page.waitForTimeout(6000)
+  const data = await page.evaluate(async () => {
+    var urlss = document.querySelectorAll('.downloadBtn')
+    const urls = Array.from(urlss).map(v => v.href)
+    return urls
+  })
+  console.log(data)
+  const scr = await page.screenshot({ path: 'final.png' })
+  await browser.close();
+return data
+}
 
 /* var bgfind = async (fblink) => {
 
@@ -544,6 +571,18 @@ app.get('/y', async (req, res) => {
 
   //res.sendFile(path.join(__dirname, '/s.png'))
 })
+
+
+app.get('/web2', async (req, res) => {
+
+res.send(await web2(req.query.url))
+})
+
+: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v110.0.1/chromium-v110.0.1-pack.tar"),
+    headless: false
+  })
 
 
 app.get("/uplinks", async (req, res) => {
