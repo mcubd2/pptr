@@ -578,11 +578,6 @@ app.get('/web2', async (req, res) => {
 res.send(await web2(req.query.url))
 })
 
-: chromium.args,
-    defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v110.0.1/chromium-v110.0.1-pack.tar"),
-    headless: false
-  })
 
 
 app.get("/uplinks", async (req, res) => {
