@@ -10,7 +10,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const moment=require('moment-timezone');
+const moment = require('moment-timezone');
 //const  fetch =require('node-fetch')
 //const bodyParser=require('body-parser') 
 const path = require('path');
@@ -20,9 +20,31 @@ const puppeteer = require("puppeteer-core");
 const chromium = require("@sparticuz/chromium-min");
 //const chromium = require('chromium');
 //import { initializeApp } from "firebase/app";
-const firebase = require('firebase');
+const firebase = require('firebase/app');
+const db =require("firebase/database");
 
 
+
+
+const config = {
+  apiKey: "AIzaSyBzaFL1XOU-_152duOo0baL1DfgVVuSwMI",
+  authDomain: "test2-5bbd8.firebaseapp.com",
+  databaseURL: "https://test2-5bbd8-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "test2-5bbd8",
+  storageBucket: "test2-5bbd8.appspot.com",
+  messagingSenderId: "683307239625",
+  appId: "1:683307239625:web:d28ed1c2fb6b31dd4e6518"
+};
+
+
+const fapp = firebase.initializeApp(config);
+const database = db.getDatabase(fapp);
+
+var getjson=async function (){
+  const dbRef = db.ref(db.getDatabase());
+var stringg = (await db.get(db.child(dbRef, `Name`))).val()
+return string
+}
 
 let chrome = {};
 //let puppeteer;
@@ -51,44 +73,44 @@ app.use(cors({
 //app.use(bodyParser.text({ type: "*/*" }));
 
 //var DB = 'mongodb+srv://zayn:1221@cluster0.fzxdoyt.mongodb.net/db1?retryWrites=true&w=majority'; mongoose.connect(DB)
- // .then(() => { console.log('con suc') }).catch((err) => { console.log(err) })
+// .then(() => { console.log('con suc') }).catch((err) => { console.log(err) })
 //var schema =new mongoose.Schema({ data: String, ram: String, device: String, platform: String, date: String, ip: String, num: String, media: String,fname:String,links:String,name:String,trash:String })
 //var collec = new mongoose.model('multis', schema)
 
 var DB = 'mongodb+srv://zayn:1221@cluster0.fzxdoyt.mongodb.net/db1?retryWrites=true&w=majority'; mongoose.connect(DB)
-.then(() => { console.log('connected to the db') }).catch((err) => { console.log(err) })
-  var multis_schema = new mongoose.Schema({ name: String,  data: String ,last_updated:String })
-  var collec = new mongoose.model('multis', multis_schema) 
+  .then(() => { console.log('connected to the db') }).catch((err) => { console.log(err) })
+var multis_schema = new mongoose.Schema({ name: String, data: String, last_updated: String })
+var collec = new mongoose.model('multis', multis_schema)
 
 
-var web1 = async (url) =>{
-  
-const browser = await puppeteer.launch({
+var web1 = async (url) => {
+
+  const browser = await puppeteer.launch({
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
     executablePath: await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v110.0.1/chromium-v110.0.1-pack.tar"),
     headless: false
   })
- 
-  var ahp="https://www.ssemble.com/en140yn/youtube-downloader/"
-  var ap ="https://en.savefrom.net/"
-var aa=url || "https://youtu.be/QQkmJI63ykI?si=1aOYl9yLULJzSZYh"
+
+  var ahp = "https://www.ssemble.com/en140yn/youtube-downloader/"
+  var ap = "https://en.savefrom.net/"
+  var aa = url || "https://youtu.be/QQkmJI63ykI?si=1aOYl9yLULJzSZYh"
   const page = await browser.newPage();
-  await page.goto(ap )
+  await page.goto(ap)
   await page.waitForTimeout(3000)
-  await page.screenshot({ path: 'step--11.png' })  
-  await page.type('input[id=sf_url]',aa)
-   await page.click('button[type=submit]')
-   await page.waitForTimeout(10000)
- const data = await page.evaluate(async () => {
-   var urlss   = document.querySelectorAll('a')
-   const urls =Array.from(urlss).map(v => v.href)
-   return urls  
-  }) 
-console.log(data)
-  
-  const scr = await page.screenshot({path :'final.png'})
- 
+  await page.screenshot({ path: 'step--11.png' })
+  await page.type('input[id=sf_url]', aa)
+  await page.click('button[type=submit]')
+  await page.waitForTimeout(10000)
+  const data = await page.evaluate(async () => {
+    var urlss = document.querySelectorAll('a')
+    const urls = Array.from(urlss).map(v => v.href)
+    return urls
+  })
+  console.log(data)
+
+  const scr = await page.screenshot({ path: 'final.png' })
+
   await browser.close();
   return data
 }
@@ -430,21 +452,21 @@ console.log("ghsjsjsjjsjsjsjg-")
 
 }
 
-app.get("/get",async (req,res) => {
-try{
-var b =await collec.findOne({name:'Webapp_videos'})
-res.send(await b)
-   }catch(e){}
+app.get("/get", async (req, res) => {
+  try {
+    var b = await collec.findOne({ name: 'Webapp_videos' })
+    res.send(await b)
+  } catch (e) { }
 })
 
-app.get("/update", async (req,res)=> {
-try{
-var b =await collec.updateOne({data:'updated'},{last_updated: moment().tz('Asia/dhaka').format('h:m a,D/M/YY')})
-res.send(await b)
-   }catch(e){
-  res.send(e)
-   }
-  
+app.get("/update", async (req, res) => {
+  try {
+    var b = await collec.updateOne({ data: 'updated' }, { last_updated: moment().tz('Asia/dhaka').format('h:m a,D/M/YY') })
+    res.send(await b)
+  } catch (e) {
+    res.send(e)
+  }
+
 })
 
 app.post("/", async (req, res) => {
@@ -469,7 +491,7 @@ app.get('/yt', async (req, res) => {
   await gdrive()
   res.sendFile(path.join(__dirname, '/s.png'))
 })
-app.get('/web1',async (req,res)=> {
+app.get('/web1', async (req, res) => {
 
   res.send(await web1(req.query.url))
 })
@@ -484,35 +506,35 @@ app.get('/y', async (req, res) => {
     executablePath: await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v110.0.1/chromium-v110.0.1-pack.tar"),
     headless: false
   })
- 
-  var ahp="https://www.ssemble.com/en140yn/youtube-downloader/"
-  var ap ="https://save.tube/"
-var aa=req.query.url || "https://youtu.be/QQkmJI63ykI?si=1aOYl9yLULJzSZYh"
+
+  var ahp = "https://www.ssemble.com/en140yn/youtube-downloader/"
+  var ap = "https://save.tube/"
+  var aa = req.query.url || "https://youtu.be/QQkmJI63ykI?si=1aOYl9yLULJzSZYh"
   const page = await browser.newPage();
-  await page.goto(ap )
+  await page.goto(ap)
   await page.waitForTimeout(3000)
-  await page.screenshot({ path: 'step--11.png' })  
-  await page.type('input[id=video]',aa)
-   await page.click('input[type=submit]')
-   await page.waitForTimeout(6000)
-   //await page.waitForSelector('#buttonDL' , {visible: true})
-   //await page.click('#buttonDL')
- //  await page.waitForTimeout(3000)
+  await page.screenshot({ path: 'step--11.png' })
+  await page.type('input[id=video]', aa)
+  await page.click('input[type=submit]')
+  await page.waitForTimeout(6000)
+  //await page.waitForSelector('#buttonDL' , {visible: true})
+  //await page.click('#buttonDL')
+  //  await page.waitForTimeout(3000)
   //await page.waitForSelector('#cnext')
- //await page.waitForTimeout(3000)
- const data = await page.evaluate(async () => {
-   var urlss   = document.querySelectorAll('.downloadBtn')
-   const urls =Array.from(urlss).map(v => v.href)
-   return urls  
-  }) 
-console.log(data)
- 
-  const scr = await page.screenshot({path :'final.png'})
- // await page.click('[type=button]')
+  //await page.waitForTimeout(3000)
+  const data = await page.evaluate(async () => {
+    var urlss = document.querySelectorAll('.downloadBtn')
+    const urls = Array.from(urlss).map(v => v.href)
+    return urls
+  })
+  console.log(data)
+
+  const scr = await page.screenshot({ path: 'final.png' })
+  // await page.click('[type=button]')
   //await page.click('[type=button]')
   await browser.close();
   //res.set('Content-Type', 'image/png');
-  res.send(data );
+  res.send(data);
   //res.send(data) 
 
   //res.sendFile(path.join(__dirname, '/s.png'))
@@ -544,7 +566,7 @@ app.get('/z', (req, res) => {
 app.get("/", async (req, res) => {
   res.send('Home gsweat hommop!');
 });
-app.get("/ex", (re,res)=>{
+app.get("/ex", (re, res) => {
   process.exit()
 })
 
