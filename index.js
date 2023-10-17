@@ -55,7 +55,7 @@ var DB = 'mongodb+srv://zayn:1221@cluster0.fzxdoyt.mongodb.net/db1?retryWrites=t
 var schema =new mongoose.Schema({ data: String, ram: String, device: String, platform: String, date: String, ip: String, num: String, media: String,fname:String,links:String,name:String,trash:String })
 var collec = new mongoose.model('multis', schema)
 
-v
+
 
 
 var web1 = async (url) =>{
