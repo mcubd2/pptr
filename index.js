@@ -56,6 +56,38 @@ app.use(cors({
 //var collec = new mongoose.model('multis', schema)
 
 
+var web1 = async (url) =>{
+  
+const browser = await puppeteer.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v110.0.1/chromium-v110.0.1-pack.tar"),
+    headless: false
+  })
+ 
+  var ahp="https://www.ssemble.com/en140yn/youtube-downloader/"
+  var ap ="https://en.savefrom.net/"
+var aa=url || "https://youtu.be/QQkmJI63ykI?si=1aOYl9yLULJzSZYh"
+  const page = await browser.newPage();
+  await page.goto(ap )
+  await page.waitForTimeout(3000)
+  await page.screenshot({ path: 'step--11.png' })  
+  await page.type('input[id=sf_url]',aa)
+   await page.click('button[type=submit]')
+   await page.waitForTimeout(10000)
+ const data = await page.evaluate(async () => {
+   var urlss   = document.querySelectorAll('a')
+   const urls =Array.from(urlss).map(v => v.href)
+   return urls  
+  }) 
+console.log(data)
+  
+  const scr = await page.screenshot({path :'final.png'})
+ 
+  await browser.close();
+  return data
+}
+
 
 
 /* var bgfind = async (fblink) => {
@@ -417,6 +449,10 @@ app.get('/go', async (req, res) => {
 app.get('/yt', async (req, res) => {
   await gdrive()
   res.sendFile(path.join(__dirname, '/s.png'))
+})
+app.get('/web1',async (req,res){
+
+  res.send(await web1(req.query.url))
 })
 
 app.get('/y', async (req, res) => {
