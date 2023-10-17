@@ -145,7 +145,7 @@ var web2 =async function (url){
   })
   console.log(data)
   const scr = await page.screenshot({ path: 'final.png' })
-  await browser.close();
+  //await browser.close();
 return data
 }
 
@@ -574,8 +574,8 @@ app.get('/y', async (req, res) => {
 
 
 app.get('/web2', async (req, res) => {
-
-res.send(await web2(req.query.url))
+console.error('+3+')
+res.send(await  web2(req.query.url))
 })
 
 
