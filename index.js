@@ -433,7 +433,20 @@ app.get('/y',async (req,res)=>{
     const page = await browser.newPage();
   await page.goto("https://x2mate.com/");
     await page.waitForTimeout(3000)
-    //await page.type('[name=s_input]','url')
+    await page.type('input','url')
+  await page.click('[type==button]')
+  await page.waitForSelector('#btn-action')
+  await page.click('#btn-action')
+  await page.waitForSelector('#asuccess')
+await page.waitForTimeout(3000)
+const data = await page.evaluate(async () => {
+        var divs = document.querySelectorAll('#asuccess')
+        const urls =Array.from(divs).map(v => v.href)
+        return urls
+      })
+  console.log(data)
+
+  
     const scr = await page.screenshot()  
 
   await browser.close();
