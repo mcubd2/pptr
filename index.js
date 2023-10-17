@@ -43,14 +43,14 @@ var getjson=async function (){
 var stringg = (await db.get(db.child(dbRef, `Name`))).val()
 return string
 }
-var updt_webapp=async function (data){
-  db.update(db.ref(database,"multi/webapp"), { data  :data,last_updated:moment().tz('Asia/dhaka').format('h:m a,D/M/YY') });
+var updt_webapp=async function (ndata){
+  db.update(db.ref(database,"multi/webapp"), { data  : ndata,last_updated:moment().tz('Asia/dhaka').format('h:m a,D/M/YY') });
 }
-updt_webapp("-৳+")
+updt_webapp("-uu৳+")
 //const dbref = db.ref(D.getDatabase());
 
 
-db.update(db.ref(database,"multi/webapp"), { data  :" com " });
+//db.update(db.ref(database,"multi/webapp"), { data  :" com " });
 let chrome = {};
 //let puppeteer;
 
