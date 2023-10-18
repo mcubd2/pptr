@@ -123,7 +123,7 @@ var web1 = async (url) => {
 var web2 =async function (url){
   const browser = await puppeteer.launch({
     args: chromium.args,
-    ignoreDefaultArgs: ['--disable-extensions']}),
+    ignoreDefaultArgs: ['--disable-extensions'],
     defaultViewport: chromium.defaultViewport,
     executablePath: await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v110.0.1/chromium-v110.0.1-pack.tar"),
     headless: false
