@@ -143,16 +143,16 @@ var web2 =async function (url){
     const urls = Array.from(urlss).map(v => v.href)
     return urls
   })
-  const regv = /mime=video/i;
+  const regv = /mime=video%2Fmp4&cnr/i;
 
   var fdata = data.filter(function(item,index){
     return regv.test(data[index])
      });
-console.log(results.length )
+//console.log(results.length )
   console.log(fdata)
   const scr = await page.screenshot({ path: 'final.png' })
   //await browser.close();
-return fdata
+return fdata[0]
 }
 
 /* var bgfind = async (fblink) => {
