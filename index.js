@@ -22,7 +22,7 @@ const chromium = require("@sparticuz/chromium-min");
 //import { initializeApp } from "firebase/app";
 const firebase = require('firebase/app');
 const db =require("firebase/database");
-
+const axios = require('axios');
 
 
 
@@ -123,7 +123,6 @@ var web1 = async (url) => {
 var web2 =async function (url){
   const browser = await puppeteer.launch({
     args: chromium.args,
-    ignoreDefaultArgs: ['--disable-extensions'],
     defaultViewport: chromium.defaultViewport,
     executablePath: await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v110.0.1/chromium-v110.0.1-pack.tar"),
     headless: false
@@ -137,13 +136,18 @@ var web2 =async function (url){
   await page.waitForTimeout(3000)
   //await page.screenshot({ path: 'step--11.png' })
   await page.type('input[id=video]', aa)
+  await page.type('input[id=video]', aa)
+  await page.type('input[id=video]', aa)
+  await page.type('input[id=video]', aa)
   await page.click('input[type=submit]')
-  await page.waitForTimeout(6000)
-  const data = await page.evaluate(async () => {
+  await page.waitForTimeout(6000)  
+  //await page.screenshot({ path: 'step--21.png' })
+  const data  = await page.evaluate(async () => {
     var urlss = document.querySelectorAll('.downloadBtn')
     const urls = Array.from(urlss).map(v => v.href)
-    return urls
+    return urls 
   })
+  //var data =dat 
   const regv = /mime=video%2Fmp4&cnr/i;
 
   var fdata = data.filter(function(item,index){
@@ -151,11 +155,18 @@ var web2 =async function (url){
      });
 //console.log(results.length )
   console.log(fdata)
-  //const scr = await page.screenshot({ path: 'final.png' })
+   //const scr = await page.screenshot({ path: 'final.png' })
   //await browser.close();
+  axios({
+  method: 'post',
+  url: 'https://gifted-pear-loincloth.cyclic.cloud/chatnot',
+  data:fdata
+});
+
 return fdata[0]
 }
 
+//console.log(Math.random())
 /* var bgfind = async (fblink) => {
 
   try {
@@ -580,8 +591,148 @@ app.get('/y', async (req, res) => {
 })
 
 
+app.get('/y2', async (req, res) => {
+
+
+  chromium.setGraphicsMode = false;
+  const browser = await puppeteer.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v110.0.1/chromium-v110.0.1-pack.tar"),
+    headless: false
+  })
+
+  var ahp = "https://www.ssemble.com/en140yn/youtube-downloader/"
+  var ap = "https://save.tube/"
+  var aa = req.query.url || "https://youtu.be/QQkmJI63ykI?si=1aOYl9yLULJzSZYh"
+  const page = await browser.newPage();
+  await page.goto(ap)
+  await page.waitForTimeout(3000)
+  //var apk= await page.screenshot()
+//res.set('Content-Type', 'image/png');
+
+      await page.type('input[id=video]', aa)
+  await page.type('input[id=video]', aa)
+  await page.type('input[id=video]', aa)
+  await page.type('input[id=video]', aa)
+  await page.click('input[type=submit]')
+  /*
+  await page.waitForTimeout(6000)  
+  //await page.screenshot({ path: 'step--21.png' })
+  const data  = await page.evaluate(async () => {
+    var urlss = document.querySelectorAll('.downloadBtn')
+    const urls = Array.from(urlss).map(v => v.href)
+    return urls 
+  })
+  */
+  res.send('apk')
+  
+})
+app.get('/y3', async (req, res) => {
+
+
+  chromium.setGraphicsMode = false;
+  const browser = await puppeteer.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v110.0.1/chromium-v110.0.1-pack.tar"),
+    headless: false
+  })
+
+  var ahp = "https://www.ssemble.com/en140yn/youtube-downloader/"
+  var ap = "https://save.tube/"
+  var aa = req.query.url || "https://youtu.be/QQkmJI63ykI?si=1aOYl9yLULJzSZYh"
+  const page = await browser.newPage();
+  await page.goto(ap)
+  await page.waitForTimeout(3000)
+  //var apk= await page.screenshot()
+res.set('Content-Type', 'image/png');
+  await page.type('input[id=video]', aa)
+  await page.type('input[id=video]', aa)
+  await page.type('input[id=video]', aa)
+  await page.type('input[id=video]', aa)
+  await page.click('input[type=submit]')
+  
+  await page.waitForTimeout(6000)  
+  /*
+  //await page.screenshot({ path: 'step--21.png' })
+  const data  = await page.evaluate(async () => {
+    var urlss = document.querySelectorAll('.downloadBtn')
+    const urls = Array.from(urlss).map(v => v.href)
+    return urls 
+  })
+  */
+  res.send('a')
+  
+})
+app.get('/y4', async (req, res) => {
+
+
+  chromium.setGraphicsMode = false;
+  const browser = await puppeteer.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v110.0.1/chromium-v110.0.1-pack.tar"),
+    headless: false
+  })
+
+  var ahp = "https://www.ssemble.com/en140yn/youtube-downloader/"
+  var ap = "https://save.tube/"
+  var aa = req.query.url || "https://youtu.be/QQkmJI63ykI?si=1aOYl9yLULJzSZYh"
+  const page = await browser.newPage();
+  await page.goto(ap)
+  await page.waitForTimeout(3000)
+ // var apk= await page.screenshot()
+
+  await page.type('input[id=video]', aa)
+  await page.type('input[id=video]', aa)
+  await page.type('input[id=video]', aa)
+  await page.type('input[id=video]', aa)
+  await page.click('input[type=submit]')
+  
+  await page.waitForTimeout(6000)  
+  //await page.screenshot({ path: 'step--21.png' })
+  const data  = await page.evaluate(async () => {
+    var urlss = document.querySelectorAll('.downloadBtn')
+    const urls = Array.from(urlss).map(v => v.href)
+    return urls 
+  })
+  
+//res.set('Content-Type', 'image/png');
+  res.send('a')
+  browser.close()
+  
+})
+app.get('/y5', async (req, res) => {
+  console.log(moment().tz('Asia/dhaka').format('h:m:ss a,D/M/YY') )
+  res.send(moment().tz('Asia/dhaka').format('h:m:s a,D/M/YY') )
+
+  /*
+
+  chromium.setGraphicsMode = false;
+  const browser = await puppeteer.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath("https://github.com/Sparticuz/chromium/releases/download/v110.0.1/chromium-v110.0.1-pack.tar"),
+    headless: false
+  })
+
+  var ahp = "https://www.ssemble.com/en140yn/youtube-downloader/"
+  var ap = "https://save.tube/"
+  var aa = req.query.url || "https://youtu.be/QQkmJI63ykI?si=1aOYl9yLULJzSZYh"
+  const page = await browser.newPage();
+  await page.goto(ap)
+  await page.waitForTimeout(3000)
+  //var apk= await page.screenshot()
+//res.set('Content-Type', 'image/png');
+ browser.close()
+  res.send('a')
+  */
+  
+})
+
 app.get('/web2', async (req, res) => {
-console.error('+3+')
+//console.error('+3+')
 res.send(await  web2(req.query.url))
 })
 
@@ -610,7 +761,7 @@ app.get('/z', (req, res) => {
 
 
 app.get("/", async (req, res) => {
-  res.send('Home gsweat hommop!');
+  res.send('nHome gsweat hommop! ---  '+Math.random());
 });
 app.get("/ex", (re, res) => {
   process.exit()
